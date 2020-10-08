@@ -64,35 +64,3 @@ const (
 	PostalCodeTypePin
 	PostalCodeTypeZip
 )
-
-// Format represents an address format.
-type Format struct {
-	Layout            string
-	Required          []Field
-	SublocalityType   SublocalityType
-	LocalityType      LocalityType
-	RegionType        RegionType
-	PostalCodeType    PostalCodeType
-	PostalCodePattern string
-	ShowRegionID      bool
-	Regions           map[string]string
-}
-
-// IsRequired returns whether the given field is required.
-func (f Format) IsRequired(field Field) bool {
-	for _, ff := range f.Required {
-		if ff == field {
-			return true
-		}
-	}
-	return false
-}
-
-// GetFormat returns an address format for the given country code.
-func GetFormat(countryCode string) Format {
-	format, ok := formats[countryCode]
-	if !ok {
-		return formats["ZZ"]
-	}
-	return format
-}
