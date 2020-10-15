@@ -121,6 +121,55 @@ func TestFormat_CheckPostalCode(t *testing.T) {
 	}
 }
 
+func TestCheckCountryCode(t *testing.T) {
+	tests := []struct {
+		countryCode string
+		want        bool
+	}{
+		// Empty value.
+		{"", true},
+		// Valid country code.
+		{"FR", true},
+		// Invalid country code.
+		{"ABCD", false},
+	}
+
+	for _, tt := range tests {
+		t.Run("", func(t *testing.T) {
+			got := address.CheckCountryCode(tt.countryCode)
+			if got != tt.want {
+				t.Errorf("got %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestGetCountryCodes(t *testing.T) {
+	countryCodes := address.GetCountryCodes()
+	for _, countryCode := range []string{"FR", "RS", "US"} {
+		if !contains(countryCodes, countryCode) {
+			t.Errorf("no %v country code found.", countryCode)
+		}
+	}
+}
+
+func TestGetCountryNames(t *testing.T) {
+	got := address.GetCountryNames()
+	want := map[string]string{
+		"FR": "France",
+		"RS": "Serbia",
+	}
+	for wantCode, wantName := range want {
+		gotName, ok := got[wantCode]
+		if !ok {
+			t.Errorf("no %v country code found.", wantCode)
+		}
+		if gotName != wantName {
+			t.Errorf("got %v, want %v", gotName, wantName)
+		}
+	}
+}
+
 func TestGetFormat(t *testing.T) {
 	// Existing format.
 	got := address.GetFormat("RS")
@@ -158,4 +207,13 @@ func TestGetFormats(t *testing.T) {
 			t.Errorf("no %v address format found.", countryCode)
 		}
 	}
+}
+
+func contains(a []string, x string) bool {
+	for _, v := range a {
+		if v == x {
+			return true
+		}
+	}
+	return false
 }

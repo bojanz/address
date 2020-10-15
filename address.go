@@ -3,7 +3,10 @@
 
 package address
 
-import "regexp"
+import (
+	"regexp"
+	"sort"
+)
 
 // Address represents an address.
 type Address struct {
@@ -79,6 +82,32 @@ func (f Format) CheckPostalCode(postalCode string) bool {
 	}
 	rx := regexp.MustCompile(f.PostalCodePattern)
 	return rx.MatchString(postalCode)
+}
+
+// CheckCountryCode checks whether the given country code is valid.
+//
+// An empty country code is considered valid.
+func CheckCountryCode(countryCode string) bool {
+	if countryCode == "" {
+		return true
+	}
+	_, ok := countries[countryCode]
+	return ok
+}
+
+// GetCountryCodes returns all known country codes.
+func GetCountryCodes() []string {
+	countryCodes := make([]string, 0, len(countries))
+	for countryCode := range countries {
+		countryCodes = append(countryCodes, countryCode)
+	}
+	sort.Strings(countryCodes)
+	return countryCodes
+}
+
+// GetCountryNames returns all known country names, keyed by country code.
+func GetCountryNames() map[string]string {
+	return countries
 }
 
 // GetFormats returns all known address formats, keyed by country code.
