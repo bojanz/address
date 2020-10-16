@@ -541,7 +541,7 @@ var formats = map[string]Format{
 		},
 	},
 	"IE": {
-		Layout:            "%1\n%2\n%S\n%L\n%R %P",
+		Layout:            "%1\n%2\n%S\n%L\n%R\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
 		RegionType:        RegionTypeCounty,
 		SublocalityType:   SublocalityTypeTownland,
@@ -722,7 +722,7 @@ var formats = map[string]Format{
 	"KH": {
 		Layout:            "%1\n%2\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: "\\d{6}",
 	},
 	"KI": {
 		Layout:     "%1\n%2\n%R\n%L",
