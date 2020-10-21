@@ -33,7 +33,9 @@ func (a Address) IsEmpty() bool {
 
 // Format represents an address format.
 type Format struct {
+	Locale            Locale
 	Layout            string
+	LocalLayout       string
 	Required          []Field
 	SublocalityType   SublocalityType
 	LocalityType      LocalityType
@@ -42,6 +44,7 @@ type Format struct {
 	PostalCodePattern string
 	ShowRegionID      bool
 	Regions           map[string]string
+	LocalRegions      map[string]string
 }
 
 // IsRequired returns whether the given field is required.
@@ -82,6 +85,33 @@ func (f Format) CheckPostalCode(postalCode string) bool {
 	}
 	rx := regexp.MustCompile(f.PostalCodePattern)
 	return rx.MatchString(postalCode)
+}
+
+// SelectLayout selects the correct layout for the given locale.
+func (f Format) SelectLayout(locale Locale) string {
+	if f.LocalLayout != "" && f.useLocalData(locale) {
+		return f.LocalLayout
+	}
+	return f.Layout
+}
+
+// SelectRegions selects the correct regions for the given locale.
+func (f Format) SelectRegions(locale Locale) map[string]string {
+	if len(f.LocalRegions) > 0 && f.useLocalData(locale) {
+		return f.LocalRegions
+	}
+	return f.Regions
+}
+
+// useLocalData returns whether local data should be used for the given locale.
+func (f Format) useLocalData(locale Locale) bool {
+	if locale.Script == "Latn" {
+		// Allow locales to opt out of local data. E.g: zh-Latn.
+		return false
+	}
+	// Scripts are not compared, matching libaddressinput behavior. This means
+	// that zh-Hant data will be shown to zh-Hans users, and vice-versa.
+	return locale.Language == f.Locale.Language
 }
 
 // CheckCountryCode checks whether the given country code is valid.

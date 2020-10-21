@@ -121,6 +121,83 @@ func TestFormat_CheckPostalCode(t *testing.T) {
 	}
 }
 
+func TestFormat_SelectLayout(t *testing.T) {
+	tests := []struct {
+		countryCode string
+		locale      string
+		wantLocal   bool
+	}{
+		// China ("zh").
+		{"CN", "en", false},
+		{"CN", "ja", false},
+		{"CN", "zh-Latn", false},
+		{"CN", "zh", true},
+		{"CN", "zh-Hant", true},
+		// Hong Kong ("zh-Hant").
+		{"HK", "en", false},
+		{"HK", "ja", false},
+		{"HK", "zh-Latn", false},
+		{"HK", "zh", true},
+		{"HK", "zh-Hant", true},
+		// Serbia (no local layout defined).
+		{"RS", "en", false},
+	}
+
+	for _, tt := range tests {
+		t.Run("", func(t *testing.T) {
+			locale := address.NewLocale(tt.locale)
+			format := address.GetFormat(tt.countryCode)
+			got := format.SelectLayout(locale)
+			want := format.Layout
+			if tt.wantLocal {
+				want = format.LocalLayout
+			}
+
+			if got != want {
+				t.Errorf("got %v, want %v", got, want)
+			}
+		})
+	}
+}
+
+func TestFormat_SelectRegions(t *testing.T) {
+	tests := []struct {
+		countryCode string
+		locale      string
+		wantLocal   bool
+	}{
+		// China ("zh").
+		{"CN", "en", false},
+		{"CN", "ja", false},
+		{"CN", "zh-Latn", false},
+		{"CN", "zh", true},
+		{"CN", "zh-Hant", true},
+		// Hong Kong ("zh-Hant").
+		{"HK", "en", false},
+		{"HK", "ja", false},
+		{"HK", "zh-Latn", false},
+		{"HK", "zh", true},
+		{"HK", "zh-Hant", true},
+		// Serbia (no local regions defined).
+		{"RS", "en", false},
+	}
+
+	for _, tt := range tests {
+		t.Run("", func(t *testing.T) {
+			format := address.GetFormat(tt.countryCode)
+			locale := address.NewLocale(tt.locale)
+			got := format.SelectRegions(locale)
+			want := format.Regions
+			if tt.wantLocal {
+				want = format.LocalRegions
+			}
+			if !reflect.DeepEqual(got, want) {
+				t.Errorf("got %v, want %v", got, want)
+			}
+		})
+	}
+}
+
 func TestCheckCountryCode(t *testing.T) {
 	tests := []struct {
 		countryCode string
