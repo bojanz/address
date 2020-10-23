@@ -12,6 +12,7 @@ import (
 type Address struct {
 	Line1 string
 	Line2 string
+	Line3 string
 	// Sublocality is the neighborhood/suburb/district.
 	Sublocality string
 	// Locality is the city/village/post town.

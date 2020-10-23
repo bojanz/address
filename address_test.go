@@ -251,7 +251,7 @@ func TestGetFormat(t *testing.T) {
 	// Existing format.
 	got := address.GetFormat("RS")
 	want := address.Format{
-		Layout:            "%1\n%2\n%P %L",
+		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []address.Field{address.FieldLine1, address.FieldLocality},
 		PostalCodePattern: "\\d{5,6}",
 	}
@@ -262,7 +262,7 @@ func TestGetFormat(t *testing.T) {
 	// Generic format.
 	generic := address.GetFormat("ZZ")
 	want = address.Format{
-		Layout:   "%1\n%2\n%L",
+		Layout:   "%1\n%2\n%3\n%L",
 		Required: []address.Field{address.FieldLine1, address.FieldLocality},
 	}
 	if !reflect.DeepEqual(generic, want) {

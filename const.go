@@ -9,6 +9,7 @@ type Field string
 const (
 	FieldLine1       Field = "1"
 	FieldLine2       Field = "2"
+	FieldLine3       Field = "3"
 	FieldSublocality Field = "S"
 	FieldLocality    Field = "L"
 	FieldRegion      Field = "R"
