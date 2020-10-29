@@ -10,20 +10,20 @@ import (
 
 // Address represents an address.
 type Address struct {
-	Line1 string
-	Line2 string
-	Line3 string
+	Line1 string `json:"line1"`
+	Line2 string `json:"line2"`
+	Line3 string `json:"line3"`
 	// Sublocality is the neighborhood/suburb/district.
-	Sublocality string
+	Sublocality string `json:"sublocality"`
 	// Locality is the city/village/post town.
-	Locality string
+	Locality string `json:"locality"`
 	// Region is the state/province/prefecture.
 	// An ISO code is used when available.
-	Region string
+	Region string `json:"region"`
 	// PostalCode is the postal/zip/pin code.
-	PostalCode string
+	PostalCode string `json:"postal_code"`
 	// CountryCode is the two-letter code as defined by CLDR.
-	CountryCode string
+	CountryCode string `json:"country"`
 }
 
 // IsEmpty returns whether a is empty.
@@ -34,18 +34,18 @@ func (a Address) IsEmpty() bool {
 
 // Format represents an address format.
 type Format struct {
-	Locale            Locale
-	Layout            string
-	LocalLayout       string
-	Required          []Field
-	SublocalityType   SublocalityType
-	LocalityType      LocalityType
-	RegionType        RegionType
-	PostalCodeType    PostalCodeType
-	PostalCodePattern string
-	ShowRegionID      bool
-	Regions           map[string]string
-	LocalRegions      map[string]string
+	Locale            Locale            `json:"locale,omitempty"`
+	Layout            string            `json:"layout,omitempty"`
+	LocalLayout       string            `json:"local_layout,omitempty"`
+	Required          []Field           `json:"required,omitempty"`
+	SublocalityType   SublocalityType   `json:"sublocality_type,omitempty"`
+	LocalityType      LocalityType      `json:"locality_type,omitempty"`
+	RegionType        RegionType        `json:"region_type,omitempty"`
+	PostalCodeType    PostalCodeType    `json:"postal_code_type,omitempty"`
+	PostalCodePattern string            `json:"postal_code_pattern,omitempty"`
+	ShowRegionID      bool              `json:"show_region_id,omitempty"`
+	Regions           map[string]string `json:"regions,omitempty"`
+	LocalRegions      map[string]string `json:"local_regions,omitempty"`
 }
 
 // IsRequired returns whether the given field is required.
