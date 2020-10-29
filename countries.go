@@ -3,7 +3,7 @@
 
 package address
 
-// CLDRVersion is the CLDR version from which the data is derived.
+// CLDRVersion is the CLDR version from which the country list is derived.
 const CLDRVersion = "37.0.0"
 
 var countries = map[string]string{
