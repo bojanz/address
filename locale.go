@@ -53,6 +53,17 @@ func (l Locale) String() string {
 	return b.String()
 }
 
+// MarshalText implements the encoding.TextMarshaler interface.
+func (l Locale) MarshalText() ([]byte, error) {
+	return []byte(l.String()), nil
+}
+
+// UnmarshalText implements the encoding.TextUnmarshaler interface.
+func (l *Locale) UnmarshalText(b []byte) error {
+	*l = NewLocale(string(b))
+	return nil
+}
+
 // IsEmpty returns whether l is empty.
 func (l Locale) IsEmpty() bool {
 	return l.Language == "" && l.Script == "" && l.Territory == ""
