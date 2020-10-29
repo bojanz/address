@@ -173,6 +173,13 @@ func TestFormatter_FormatCN(t *testing.T) {
 
 	locale = address.NewLocale("zh")
 	formatter = address.NewFormatter(locale)
+	formatter.CountryMapper = func(countryCode string, locale address.Locale) string {
+		if countryCode == "CN" && locale.Language == "zh" {
+			return "中国"
+		}
+		countries := address.GetCountryNames()
+		return countries[countryCode]
+	}
 	// Local address.
 	addr = address.Address{
 		Line1:       "幸福中路",
@@ -184,7 +191,7 @@ func TestFormatter_FormatCN(t *testing.T) {
 	}
 	wantLines = []string{
 		`<p class="address" translate="no">`,
-		`<span class="country" data-value="CN">China</span><br>`,
+		`<span class="country" data-value="CN">中国</span><br>`,
 		`<span class="postal-code">710043</span><br>`,
 		`<span class="region">陕西省</span><span class="locality">西安市</span><span class="sublocality">新城区</span><br>`,
 		`<span class="line1">幸福中路</span>`,

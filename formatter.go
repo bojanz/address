@@ -11,6 +11,10 @@ import (
 // Formatter formats addresses for display.
 type Formatter struct {
 	locale Locale
+	// CountryMapper maps country codes to country names.
+	// Can be used to retrieve country names from another (localized) source.
+	// Defaults to a function that uses English country names included in the package.
+	CountryMapper func(countryCode string, locale Locale) string
 	// NoCountry turns off displaying the country name.
 	// Defaults to false.
 	NoCountry bool
@@ -25,7 +29,10 @@ type Formatter struct {
 // NewFormatter creates a new formatter for the given locale.
 func NewFormatter(locale Locale) *Formatter {
 	f := &Formatter{
-		locale:         locale,
+		locale: locale,
+		CountryMapper: func(countryCode string, locale Locale) string {
+			return countries[countryCode]
+		},
 		WrapperElement: "p",
 		WrapperClass:   "address",
 	}
@@ -48,8 +55,7 @@ func (f *Formatter) Format(addr Address) string {
 	countryAfter := (layout != format.LocalLayout)
 	country := ""
 	if !f.NoCountry {
-		countries := GetCountryNames()
-		country = html.EscapeString(countries[addr.CountryCode])
+		country = html.EscapeString(f.CountryMapper(addr.CountryCode, f.locale))
 		country = `<span class="country" data-value="` + addr.CountryCode + `">` + country + `</span>`
 	}
 	values := f.getValues(addr)
