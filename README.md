@@ -4,6 +4,8 @@ Handles address representation, validation and formatting.
 
 Inspired by Google's [libaddressinput](https://github.com/google/libaddressinput).
 
+Backstory: https://bojanz.github.io/address-handling-go/
+
 ## Features
 
 1. Address struct.
