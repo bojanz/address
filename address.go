@@ -1,6 +1,7 @@
 // Copyright (c) 2020 Bojan Zivanovic and contributors
 // SPDX-License-Identifier: MIT
 
+// Package address handles address representation, validation and formatting.
 package address
 
 import (
