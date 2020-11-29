@@ -710,7 +710,7 @@ var formats = map[string]Format{
 			"RE": "Reggio Emilia", "RI": "Rieti", "RN": "Rimini",
 			"RM": "Roma", "RO": "Rovigo", "SA": "Salerno",
 			"SS": "Sassari", "SV": "Savona", "SI": "Siena",
-			"SR": "Siracusa", "SO": "Sondrio", "SD": "Sud Sardegna",
+			"SR": "Siracusa", "SO": "Sondrio", "SU": "Sud Sardegna",
 			"TA": "Taranto", "TE": "Teramo", "TR": "Terni",
 			"TO": "Torino", "TP": "Trapani", "TN": "Trento",
 			"TV": "Treviso", "TS": "Trieste", "UD": "Udine",
