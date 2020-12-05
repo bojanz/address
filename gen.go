@@ -71,7 +71,7 @@ func main() {
 
 // fetchVersion fetches the CLDR version from GitHub.
 func fetchVersion() (string, error) {
-	data, err := fetchURL("https://raw.githubusercontent.com/unicode-cldr/cldr-localenames-full/master/package.json")
+	data, err := fetchURL("https://raw.githubusercontent.com/unicode-org/cldr-json/master/cldr-json/cldr-localenames-full/package.json")
 	if err != nil {
 		return "", fmt.Errorf("fetchVersion: %w", err)
 	}
@@ -88,9 +88,9 @@ func fetchVersion() (string, error) {
 // fetchCountries fetches the CLDR country names from GitHub.
 //
 // The JSON version of CLDR data is used because it is more convenient
-// to parse. See https://github.com/unicode-cldr/cldr-json for details.
+// to parse. See https://github.com/unicode-org/cldr-json for details.
 func fetchCountries() (map[string]string, error) {
-	data, err := fetchURL("https://raw.githubusercontent.com/unicode-cldr/cldr-localenames-full/master/main/en/territories.json")
+	data, err := fetchURL("https://raw.githubusercontent.com/unicode-org/cldr-json/master/cldr-json/cldr-localenames-full/main/en/territories.json")
 	if err != nil {
 		return nil, fmt.Errorf("fetchCountries: %w", err)
 	}
