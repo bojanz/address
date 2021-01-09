@@ -1171,7 +1171,7 @@ var formats = map[string]Format{
 			"BUK": "Bukidnon", "BUL": "Bulacan", "CAG": "Cagayan",
 			"CAN": "Camarines Norte", "CAS": "Camarines Sur", "CAM": "Camiguin",
 			"CAP": "Capiz", "CAT": "Catanduanes", "CAV": "Cavite",
-			"CEB": "Cebu", "COM": "Compostela Valley", "NCO": "Cotabato",
+			"CEB": "Cebu", "NCO": "Cotabato", "COM": "Davao de Oro",
 			"DAV": "Davao del Norte", "DAS": "Davao del Sur", "DVO": "Davao Occidental",
 			"DAO": "Davao Oriental", "DIN": "Dinagat Islands", "EAS": "Eastern Samar",
 			"GUI": "Guimaras", "IFU": "Ifugao", "ILN": "Ilocos Norte",
