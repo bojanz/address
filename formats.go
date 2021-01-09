@@ -241,7 +241,8 @@ var formats = map[string]Format{
 			"AP": "Arica y Parinacota", "AT": "Atacama", "BI": "Biobío",
 			"CO": "Coquimbo", "LI": "Libertador General Bernardo O'Higgins", "LL": "Los Lagos",
 			"LR": "Los Ríos", "MA": "Magallanes y de la Antártica Chilena", "ML": "Maule",
-			"RM": "Metropolitana de Santiago", "TA": "Tarapacá", "VS": "Valparaíso",
+			"RM": "Metropolitana de Santiago", "NB": "Ñuble", "TA": "Tarapacá",
+			"VS": "Valparaíso",
 		},
 	},
 	"CN": {
