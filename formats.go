@@ -197,7 +197,7 @@ var formats = map[string]Format{
 		PostalCodePattern: "\\d{5}",
 	},
 	"BY": {
-		Layout:            "%R\n%P %L\n%1\n%2\n%3",
+		Layout:            "%1\n%2\n%3\n%P, %L\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
 		PostalCodePattern: "\\d{6}",
 	},
@@ -799,7 +799,7 @@ var formats = map[string]Format{
 	"KH": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: "\\d{5,6}",
 	},
 	"KI": {
 		Layout:     "%1\n%2\n%3\n%R\n%L",
@@ -1035,7 +1035,7 @@ var formats = map[string]Format{
 		},
 	},
 	"NA": {
-		Layout:            "%1\n%2\n%3\n%Ln%P",
+		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
 		PostalCodePattern: "\\d{5}",
 	},
