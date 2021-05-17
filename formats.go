@@ -643,7 +643,7 @@ var formats = map[string]Format{
 		Regions: map[string]string{
 			"AN": "Andaman & Nicobar", "AP": "Andhra Pradesh", "AR": "Arunachal Pradesh",
 			"AS": "Assam", "BR": "Bihar", "CH": "Chandigarh",
-			"CT": "Chhattisgarh", "DN": "Dadra & Nagar Haveli", "DD": "Daman & Diu",
+			"CT": "Chhattisgarh", "DH": "Dadra & Nagar Haveli & Daman & Diu",
 			"DL": "Delhi", "GA": "Goa", "GJ": "Gujarat",
 			"HR": "Haryana", "HP": "Himachal Pradesh", "JK": "Jammu & Kashmir",
 			"JH": "Jharkhand", "KA": "Karnataka", "KL": "Kerala",
