@@ -4,6 +4,7 @@
 package address_test
 
 import (
+	"encoding/json"
 	"reflect"
 	"testing"
 
@@ -195,6 +196,58 @@ func TestFormat_SelectRegions(t *testing.T) {
 				t.Errorf("got %v, want %v", got, want)
 			}
 		})
+	}
+}
+
+func TestRegionMap(t *testing.T) {
+	r := address.NewRegionMap()
+	if !reflect.DeepEqual(r, address.RegionMap{}) {
+		t.Errorf(`got %v want %v`, r, address.RegionMap{})
+	}
+	if r.HasKey("06") {
+		t.Error("got true, want false")
+	}
+	if r.Len() != 0 {
+		t.Errorf(`got %v want 0`, r.Len())
+	}
+
+	r = address.NewRegionMap(
+		"15", "Artemisa", "09", "Camagüey", "08", "Ciego de Ávila",
+		"06", "Cienfuegos", "12", "Granma", "14", "Guantánamo",
+	)
+
+	region, ok := r.Get("06")
+	if region != "Cienfuegos" || !ok {
+		t.Errorf("got %v, %v want Cienfuegos, true", region, ok)
+	}
+	region, ok = r.Get("INVALID")
+	if region != "" || ok {
+		t.Errorf(`got %v, %v want "", false`, region, ok)
+	}
+	if !r.HasKey("06") {
+		t.Error("got false, want true")
+	}
+	if r.HasKey("INVALID") {
+		t.Error("got true, want false")
+	}
+
+	wantKeys := []string{
+		"15", "09", "08", "06", "12", "14",
+	}
+	if !reflect.DeepEqual(r.Keys(), wantKeys) {
+		t.Errorf(`got %v want %v`, r.Keys(), wantKeys)
+	}
+	if r.Len() != 6 {
+		t.Errorf(`got %v want 6`, r.Len())
+	}
+
+	wantBytes := []byte(`{"15":"Artemisa","09":"Camagüey","08":"Ciego de Ávila","06":"Cienfuegos","12":"Granma","14":"Guantánamo"}`)
+	gotBytes, err := json.Marshal(r)
+	if err != nil {
+		t.Errorf("unexpected error %v", err)
+	}
+	if !reflect.DeepEqual(gotBytes, wantBytes) {
+		t.Errorf(`got %v want %v`, string(gotBytes), string(wantBytes))
 	}
 }
 

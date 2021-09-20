@@ -47,6 +47,10 @@ func TestFormatHandlerNoLocale(t *testing.T) {
 	}
 	format, ok := data["TW"]
 	wantFormat := address.GetFormat("TW")
+	wantRegions := make(map[string]string)
+	for _, regionID := range wantFormat.Regions.Keys() {
+		wantRegions[regionID], _ = wantFormat.Regions.Get(regionID)
+	}
 	if !ok {
 		t.Errorf(`address format "TW" not found.`)
 	}
@@ -61,8 +65,8 @@ func TestFormatHandlerNoLocale(t *testing.T) {
 	if format.Layout != wantFormat.Layout {
 		t.Errorf("got %q, want %q", format.Layout, wantFormat.Layout)
 	}
-	if !reflect.DeepEqual(format.Regions, wantFormat.Regions) {
-		t.Errorf("got %v, want %v", format.Regions, wantFormat.Regions)
+	if !reflect.DeepEqual(format.Regions, wantRegions) {
+		t.Errorf("got %v, want %v", format.Regions, wantRegions)
 	}
 }
 
@@ -92,6 +96,10 @@ func TestFormatHandlerLocaleQuery(t *testing.T) {
 	}
 	format, ok := data["TW"]
 	wantFormat := address.GetFormat("TW")
+	wantRegions := make(map[string]string)
+	for _, regionID := range wantFormat.LocalRegions.Keys() {
+		wantRegions[regionID], _ = wantFormat.LocalRegions.Get(regionID)
+	}
 	if !ok {
 		t.Errorf(`address format "TW" not found.`)
 	}
@@ -99,8 +107,8 @@ func TestFormatHandlerLocaleQuery(t *testing.T) {
 	if format.Layout != wantFormat.LocalLayout {
 		t.Errorf("got %q, want %q", format.Layout, wantFormat.LocalLayout)
 	}
-	if !reflect.DeepEqual(format.Regions, wantFormat.LocalRegions) {
-		t.Errorf("got %v, want %v", format.Regions, wantFormat.LocalRegions)
+	if !reflect.DeepEqual(format.Regions, wantRegions) {
+		t.Errorf("got %v, want %v", format.Regions, wantRegions)
 	}
 }
 
@@ -131,6 +139,10 @@ func TestFormatHandlerLocaleHeader(t *testing.T) {
 	}
 	format, ok := data["TW"]
 	wantFormat := address.GetFormat("TW")
+	wantRegions := make(map[string]string)
+	for _, regionID := range wantFormat.LocalRegions.Keys() {
+		wantRegions[regionID], _ = wantFormat.LocalRegions.Get(regionID)
+	}
 	if !ok {
 		t.Errorf(`address format "TW" not found.`)
 	}
@@ -138,7 +150,7 @@ func TestFormatHandlerLocaleHeader(t *testing.T) {
 	if format.Layout != wantFormat.LocalLayout {
 		t.Errorf("got %q, want %q", format.Layout, wantFormat.LocalLayout)
 	}
-	if !reflect.DeepEqual(format.Regions, wantFormat.LocalRegions) {
-		t.Errorf("got %v, want %v", format.Regions, wantFormat.LocalRegions)
+	if !reflect.DeepEqual(format.Regions, wantRegions) {
+		t.Errorf("got %v, want %v", format.Regions, wantRegions)
 	}
 }

@@ -5,6 +5,9 @@
 package address
 
 import (
+	"bytes"
+	"encoding/json"
+	"fmt"
 	"regexp"
 	"sort"
 )
@@ -35,18 +38,18 @@ func (a Address) IsEmpty() bool {
 
 // Format represents an address format.
 type Format struct {
-	Locale            Locale            `json:"locale,omitempty"`
-	Layout            string            `json:"layout,omitempty"`
-	LocalLayout       string            `json:"local_layout,omitempty"`
-	Required          []Field           `json:"required,omitempty"`
-	SublocalityType   SublocalityType   `json:"sublocality_type,omitempty"`
-	LocalityType      LocalityType      `json:"locality_type,omitempty"`
-	RegionType        RegionType        `json:"region_type,omitempty"`
-	PostalCodeType    PostalCodeType    `json:"postal_code_type,omitempty"`
-	PostalCodePattern string            `json:"postal_code_pattern,omitempty"`
-	ShowRegionID      bool              `json:"show_region_id,omitempty"`
-	Regions           map[string]string `json:"regions,omitempty"`
-	LocalRegions      map[string]string `json:"local_regions,omitempty"`
+	Locale            Locale          `json:"locale,omitempty"`
+	Layout            string          `json:"layout,omitempty"`
+	LocalLayout       string          `json:"local_layout,omitempty"`
+	Required          []Field         `json:"required,omitempty"`
+	SublocalityType   SublocalityType `json:"sublocality_type,omitempty"`
+	LocalityType      LocalityType    `json:"locality_type,omitempty"`
+	RegionType        RegionType      `json:"region_type,omitempty"`
+	PostalCodeType    PostalCodeType  `json:"postal_code_type,omitempty"`
+	PostalCodePattern string          `json:"postal_code_pattern,omitempty"`
+	ShowRegionID      bool            `json:"show_region_id,omitempty"`
+	Regions           RegionMap       `json:"regions,omitempty"`
+	LocalRegions      RegionMap       `json:"local_regions,omitempty"`
 }
 
 // IsRequired returns whether the given field is required.
@@ -71,11 +74,10 @@ func (f Format) CheckRequired(field Field, value string) bool {
 //
 // An empty region is considered valid.
 func (f Format) CheckRegion(region string) bool {
-	if region == "" || len(f.Regions) == 0 {
+	if region == "" || f.Regions.Len() == 0 {
 		return true
 	}
-	_, ok := f.Regions[region]
-	return ok
+	return f.Regions.HasKey(region)
 }
 
 // CheckPostalCode checks whether the given postal code is valid.
@@ -98,8 +100,8 @@ func (f Format) SelectLayout(locale Locale) string {
 }
 
 // SelectRegions selects the correct regions for the given locale.
-func (f Format) SelectRegions(locale Locale) map[string]string {
-	if len(f.LocalRegions) > 0 && f.useLocalData(locale) {
+func (f Format) SelectRegions(locale Locale) RegionMap {
+	if f.LocalRegions.Len() > 0 && f.useLocalData(locale) {
 		return f.LocalRegions
 	}
 	return f.Regions
@@ -114,6 +116,74 @@ func (f Format) useLocalData(locale Locale) bool {
 	// Scripts are not compared, matching libaddressinput behavior. This means
 	// that zh-Hant data will be shown to zh-Hans users, and vice-versa.
 	return locale.Language == f.Locale.Language
+}
+
+// RegionMap represents a read-only ordered map of regions.
+type RegionMap struct {
+	keys   []string
+	values map[string]string
+}
+
+// NewRegionMap creates a new region map from the given pairs.
+func NewRegionMap(pairs ...string) RegionMap {
+	if len(pairs) == 0 {
+		return RegionMap{}
+	}
+	if len(pairs)%2 != 0 {
+		panic(fmt.Errorf("uneven number of pairs given to NewRegionMap()"))
+	}
+	r := RegionMap{}
+	r.keys = make([]string, 0, len(pairs)/2)
+	r.values = make(map[string]string, len(pairs)/2)
+	for i := 0; i < len(pairs)-1; i += 2 {
+		r.keys = append(r.keys, pairs[i])
+		r.values[pairs[i]] = pairs[i+1]
+	}
+
+	return r
+}
+
+// Get returns the value for the given key, or an empty string if none found.
+func (r RegionMap) Get(key string) (string, bool) {
+	v, ok := r.values[key]
+	return v, ok
+}
+
+// HasKey returns whether the given key exists in the map.
+func (r RegionMap) HasKey(key string) bool {
+	_, ok := r.values[key]
+	return ok
+}
+
+// Keys returns a list of keys.
+func (r RegionMap) Keys() []string {
+	return r.keys
+}
+
+// Len returns the number of keys in the map.
+func (r RegionMap) Len() int {
+	return len(r.keys)
+}
+
+func (r RegionMap) MarshalJSON() ([]byte, error) {
+	buf := &bytes.Buffer{}
+	encoder := json.NewEncoder(buf)
+	buf.WriteByte('{')
+	for i, key := range r.keys {
+		if i > 0 {
+			buf.WriteByte(',')
+		}
+		if err := encoder.Encode(key); err != nil {
+			return nil, err
+		}
+		buf.WriteByte(':')
+		if err := encoder.Encode(r.values[key]); err != nil {
+			return nil, err
+		}
+	}
+	buf.WriteByte('}')
+
+	return buf.Bytes(), nil
 }
 
 // CheckCountryCode checks whether the given country code is valid.

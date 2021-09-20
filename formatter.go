@@ -124,8 +124,8 @@ func (f *Formatter) getValues(addr Address) map[Field]string {
 	}
 	format := GetFormat(addr.CountryCode)
 	regions := format.SelectRegions(f.locale)
-	if !format.ShowRegionID && len(regions) > 0 {
-		region, ok := regions[addr.Region]
+	if !format.ShowRegionID && regions.Len() > 0 {
+		region, ok := regions.Get(addr.Region)
 		if ok {
 			values[FieldRegion] = region
 		}

@@ -22,20 +22,20 @@ func (h FormatHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	locale := h.getLocale(r)
 	// Preselecting the layout and regions reduces HTTP request size by ~20%.
 	type localizedFormat struct {
-		Locale            string            `json:"locale,omitempty"`
-		Layout            string            `json:"layout,omitempty"`
-		Required          []Field           `json:"required,omitempty"`
-		SublocalityType   SublocalityType   `json:"sublocality_type,omitempty"`
-		LocalityType      LocalityType      `json:"locality_type,omitempty"`
-		RegionType        RegionType        `json:"region_type,omitempty"`
-		PostalCodeType    PostalCodeType    `json:"postal_code_type,omitempty"`
-		PostalCodePattern string            `json:"postal_code_pattern,omitempty"`
-		ShowRegionID      bool              `json:"show_region_id,omitempty"`
-		Regions           map[string]string `json:"regions,omitempty"`
+		Locale            string          `json:"locale,omitempty"`
+		Layout            string          `json:"layout,omitempty"`
+		Required          []Field         `json:"required,omitempty"`
+		SublocalityType   SublocalityType `json:"sublocality_type,omitempty"`
+		LocalityType      LocalityType    `json:"locality_type,omitempty"`
+		RegionType        RegionType      `json:"region_type,omitempty"`
+		PostalCodeType    PostalCodeType  `json:"postal_code_type,omitempty"`
+		PostalCodePattern string          `json:"postal_code_pattern,omitempty"`
+		ShowRegionID      bool            `json:"show_region_id,omitempty"`
+		Regions           *RegionMap      `json:"regions,omitempty"`
 	}
 	data := make(map[string]localizedFormat, len(formats))
 	for countryCode, format := range formats {
-		data[countryCode] = localizedFormat{
+		lf := localizedFormat{
 			Locale:            format.Locale.String(),
 			Layout:            format.SelectLayout(locale),
 			Required:          format.Required,
@@ -45,8 +45,11 @@ func (h FormatHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			PostalCodeType:    format.PostalCodeType,
 			PostalCodePattern: format.PostalCodePattern,
 			ShowRegionID:      format.ShowRegionID,
-			Regions:           format.SelectRegions(locale),
 		}
+		if regions := format.SelectRegions(locale); regions.Len() > 0 {
+			lf.Regions = &regions
+		}
+		data[countryCode] = lf
 	}
 	jsonData, _ := json.Marshal(data)
 
