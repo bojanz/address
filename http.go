@@ -72,7 +72,7 @@ func (h FormatHandler) getLocale(r *http.Request) Locale {
 		locale = NewLocale(param)
 	} else if accept := r.Header.Get("Accept-Language"); accept != "" {
 		for _, sep := range []string{",", ";"} {
-			if strings.Index(accept, sep) != -1 {
+			if strings.Contains(accept, sep) {
 				acceptParts := strings.Split(accept, sep)
 				accept = acceptParts[0]
 			}
