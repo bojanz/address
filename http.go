@@ -18,7 +18,7 @@ import (
 type FormatHandler struct{}
 
 // ServeHTTP implements the http.Handler interface.
-func (h FormatHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (h *FormatHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	locale := h.getLocale(r)
 	// Preselecting the layout and regions reduces HTTP request size by ~20%.
 	type localizedFormat struct {
@@ -66,7 +66,7 @@ func (h FormatHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // 2) Header (Accept-Language=fr)
 // 3) English
 //
-func (h FormatHandler) getLocale(r *http.Request) Locale {
+func (h *FormatHandler) getLocale(r *http.Request) Locale {
 	var locale Locale
 	if param := r.URL.Query().Get("locale"); param != "" {
 		locale = NewLocale(param)
