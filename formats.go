@@ -131,6 +131,12 @@ var formats = map[string]Format{
 		Required:          []Field{FieldLine1, FieldLocality},
 		RegionType:        RegionTypeParish,
 		PostalCodePattern: "BB\\d{5}",
+		Regions: NewRegionMap(
+			"01", "Christ Church", "02", "Saint Andrew", "03", "Saint George",
+			"04", "Saint James", "05", "Saint John", "06", "Saint Joseph",
+			"07", "Saint Lucy", "08", "Saint Michael", "09", "Saint Peter",
+			"10", "Saint Philip", "11", "Saint Thomas",
+		),
 	},
 	"BD": {
 		Layout:            "%1\n%2\n%3\n%L - %P",
@@ -456,6 +462,10 @@ var formats = map[string]Format{
 		RegionType:        RegionTypeState,
 		PostalCodeType:    PostalCodeTypeZip,
 		PostalCodePattern: "(9694[1-4])(?:[ \\-](\\d{4}))?",
+		Regions: NewRegionMap(
+			"TRK", "Chuuk", "KSA", "Kosrae", "PNI", "Pohnpei",
+			"YAP", "Yap",
+		),
 	},
 	"FO": {
 		Layout:            "%1\n%2\n%3\n%P %L",
@@ -562,6 +572,14 @@ var formats = map[string]Format{
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		RegionType:        RegionTypeDepartment,
 		PostalCodePattern: "\\d{5}",
+		Regions: NewRegionMap(
+			"AT", "Atlántida", "CH", "Choluteca", "CL", "Colón",
+			"CM", "Comayagua", "CP", "Copán", "CR", "Cortés",
+			"EP", "El Paraíso", "FM", "Francisco Morazán", "GD", "Gracias a Dios",
+			"IN", "Intibucá", "IB", "Islas de la Bahía", "LP", "La Paz",
+			"LE", "Lempira", "OC", "Ocotepeque", "OL", "Olancho",
+			"SB", "Santa Bárbara", "VA", "Valle", "YO", "Yoro",
+		),
 	},
 	"HR": {
 		Layout:            "%1\n%2\n%3\n%P %L",
@@ -805,6 +823,9 @@ var formats = map[string]Format{
 		Layout:     "%1\n%2\n%3\n%R\n%L",
 		Required:   []Field{FieldLine1, FieldLocality},
 		RegionType: RegionTypeIsland,
+		Regions: NewRegionMap(
+			"G", "Gilbert Islands", "L", "Line Islands", "P", "Phoenix Islands",
+		),
 	},
 	"KN": {
 		Layout:     "%1\n%2\n%3\n%L, %R",
