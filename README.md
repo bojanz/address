@@ -10,7 +10,7 @@ Backstory: https://bojanz.github.io/address-handling-go/
 
 1. Address struct.
 2. Address formats for ~200 countries.
-3. Regions for ~45 countries, with local names where relevant (e.g: Okinawa / 沖縄県).
+3. Regions for ~50 countries, with local names where relevant (e.g: Okinawa / 沖縄県).
 4. Country list, powered by CLDR v40.
 5. HTML formatter.
 6. HTTP handler for serving address formats and regions as JSON: only ~14kb gzipped!

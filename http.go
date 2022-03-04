@@ -11,7 +11,7 @@ import (
 
 // FormatHandler is an HTTP handler for serving address formats.
 //
-// Response size is ~45kb, or ~14kb if gzip compression is used.
+// Response size is ~47kb, or ~14kb if gzip compression is used.
 //
 // The locale can be provided either as a query string (?locale=fr)
 // or as a header (Accept-Language:fr). Defaults to "en".

@@ -196,6 +196,19 @@ var formats = map[string]Format{
 		Layout:     "%1\n%2\n%3\n%L, %R",
 		Required:   []Field{FieldLine1, FieldLocality},
 		RegionType: RegionTypeIsland,
+		Regions: NewRegionMap(
+			"AK", "Acklins", "BY", "Berry Islands", "BI", "Bimini",
+			"BP", "Black Point", "CI", "Cat Island", "CO", "Central Abaco",
+			"CS", "Central Andros", "CE", "Central Eleuthera", "FP", "City of Freeport",
+			"CK", "Crooked Island and Long Cay", "EG", "East Grand Bahama", "EX", "Exuma",
+			"GC", "Grand Cay", "HI", "Harbour Island", "HT", "Hope Town",
+			"IN", "Inagua", "LI", "Long Island", "MC", "Mangrove Cay",
+			"MG", "Mayaguana", "MI", "Moore's Island", "NP", "New Providence",
+			"NO", "North Abaco", "NS", "North Andros", "NE", "North Eleuthera",
+			"RI", "Ragged Island", "RC", "Rum Cay", "SS", "San Salvador",
+			"SO", "South Abaco", "SA", "South Andros", "SE", "South Eleuthera",
+			"SW", "Spanish Wells", "WG", "West Grand Bahama",
+		),
 	},
 	"BT": {
 		Layout:            "%1\n%2\n%3\n%L %P",
@@ -311,6 +324,11 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%R, %L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		PostalCodePattern: "\\d{4,5}|\\d{3}-\\d{4}",
+		Regions: NewRegionMap(
+			"A", "Alajuela", "C", "Cartago", "G", "Guanacaste",
+			"H", "Heredia", "L", "Limón", "P", "Puntarenas",
+			"SJ", "San José",
+		),
 	},
 	"CU": {
 		Layout:            "%1\n%2\n%3\n%L %R\n%P",
@@ -1151,6 +1169,13 @@ var formats = map[string]Format{
 	"PA": {
 		Layout:   "%1\n%2\n%3\n%L\n%R",
 		Required: []Field{FieldLine1, FieldLocality},
+		Regions: NewRegionMap(
+			"1", "Bocas del Toro", "4", "Chiriquí", "2", "Coclé",
+			"3", "Colón", "5", "Darién", "EM", "Emberá",
+			"KY", "Guna Yala", "6", "Herrera", "7", "Los Santos",
+			"NT", "Naso Tjër Di", "NB", "Ngäbe-Buglé", "8", "Panamá",
+			"10", "Panamá Oeste", "9", "Veraguas",
+		),
 	},
 	"PE": {
 		Layout:            "%1\n%2\n%3\n%L %P\n%R",
@@ -1179,6 +1204,16 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%L %P %R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		PostalCodePattern: "\\d{3}",
+		Regions: NewRegionMap(
+			"NSB", "Bougainville", "CPM", "Central", "CPK", "Chimbu",
+			"EBR", "East New Britain", "ESW", "East Sepik", "EHG", "Eastern Highlands",
+			"EPW", "Enga", "GPK", "Gulf", "HLA", "Hela",
+			"JWK", "Jiwaka", "MPM", "Madang", "MRL", "Manus",
+			"MBA", "Milne Bay", "MPL", "Morobe", "NCD", "National Capital District (Port Moresby)",
+			"NIK", "New Ireland", "NPP", "Northern", "SHM", "Southern Highlands",
+			"WBK", "West New Britain", "SAN", "West Sepik", "WPD", "Western",
+			"WHM", "Western Highlands",
+		),
 	},
 	"PH": {
 		Layout:            "%1\n%2\n%3\n%S, %L\n%P %R",
@@ -1640,6 +1675,11 @@ var formats = map[string]Format{
 		RegionType:        RegionTypeState,
 		PostalCodeType:    PostalCodeTypeZip,
 		PostalCodePattern: "96898",
+		Regions: NewRegionMap(
+			"81", "Baker Island", "84", "Howland Island", "86", "Jarvis Island",
+			"67", "Johnston Atoll", "89", "Kingman Reef", "71", "Midway Islands",
+			"76", "Navassa Island", "95", "Palmyra Atoll", "79", "Wake Island",
+		),
 	},
 	"US": {
 		Layout:            "%1\n%2\n%3\n%L, %R %P",
