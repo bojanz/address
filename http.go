@@ -65,7 +65,6 @@ func (h *FormatHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // 1) Query string (?locale=fr)
 // 2) Header (Accept-Language=fr)
 // 3) English
-//
 func (h *FormatHandler) getLocale(r *http.Request) Locale {
 	var locale Locale
 	if param := r.URL.Query().Get("locale"); param != "" {
