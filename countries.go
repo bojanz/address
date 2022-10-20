@@ -4,7 +4,7 @@
 package address
 
 // CLDRVersion is the CLDR version from which the country list is derived.
-const CLDRVersion = "41.0.0"
+const CLDRVersion = "42.0.0"
 
 var countries = map[string]string{
 	"AF": "Afghanistan",
