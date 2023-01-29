@@ -166,17 +166,20 @@ func (r RegionMap) Len() int {
 }
 
 func (r RegionMap) MarshalJSON() ([]byte, error) {
+	if r.Len() == 0 {
+		return []byte("{}"), nil
+	}
 	buf := &bytes.Buffer{}
-	encoder := json.NewEncoder(buf)
+	buf.Grow(r.Len() * 30)
 	buf.WriteByte('{')
+	encoder := json.NewEncoder(buf)
 	for i, key := range r.keys {
 		if i > 0 {
 			buf.WriteByte(',')
 		}
-		if err := encoder.Encode(key); err != nil {
-			return nil, err
-		}
-		buf.WriteByte(':')
+		// The key is assumed to be safe and need no escaping.
+		// Not calling encoder.Encode on the key saves many allocations.
+		buf.WriteString(`"` + key + `":`)
 		if err := encoder.Encode(r.values[key]); err != nil {
 			return nil, err
 		}
