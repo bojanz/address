@@ -6,7 +6,6 @@ package address
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"regexp"
 	"sort"
@@ -172,17 +171,16 @@ func (r RegionMap) MarshalJSON() ([]byte, error) {
 	buf := &bytes.Buffer{}
 	buf.Grow(r.Len() * 30)
 	buf.WriteByte('{')
-	encoder := json.NewEncoder(buf)
 	for i, key := range r.keys {
 		if i > 0 {
 			buf.WriteByte(',')
 		}
-		// The key is assumed to be safe and need no escaping.
-		// Not calling encoder.Encode on the key saves many allocations.
-		buf.WriteString(`"` + key + `":`)
-		if err := encoder.Encode(r.values[key]); err != nil {
-			return nil, err
-		}
+		// A fully generic MarshalJSON would call encoder.Encode() to ensure both key and value
+		// are escaped and contain valid utf8. Since all regions are defined in the package, they
+		// are assumed to be valid, avoiding thousands of allocs when marshalling the format list.
+		buf.WriteString(`"` + key + `":"`)
+		buf.WriteString(r.values[key])
+		buf.WriteString(`"`)
 	}
 	buf.WriteByte('}')
 

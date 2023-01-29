@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"reflect"
 	"testing"
+	"unicode/utf8"
 
 	"github.com/bojanz/address"
 )
@@ -335,6 +336,38 @@ func TestGetFormats(t *testing.T) {
 		_, ok := formats[countryCode]
 		if !ok {
 			t.Errorf("no %v address format found.", countryCode)
+		}
+	}
+}
+
+func TestGetFormats_ValidRegionData(t *testing.T) {
+	// Confirm that all regions contain valid utf8.
+	// Avoids having the check at runtime, in RegionMap.MarshalJSON.
+	formats := address.GetFormats()
+	for countryCode, format := range formats {
+		if format.Regions.Len() > 0 {
+			keys := format.Regions.Keys()
+			for _, key := range keys {
+				value, _ := format.Regions.Get(key)
+				if !utf8.ValidString(key) {
+					t.Errorf("invalid key %v in %v regions", key, countryCode)
+				}
+				if !utf8.ValidString(value) {
+					t.Errorf("invalid value %v for key %v in %v regions", value, key, countryCode)
+				}
+			}
+		}
+		if format.LocalRegions.Len() > 0 {
+			keys := format.LocalRegions.Keys()
+			for _, key := range keys {
+				value, _ := format.LocalRegions.Get(key)
+				if !utf8.ValidString(key) {
+					t.Errorf("invalid key %v in %v local regions", key, countryCode)
+				}
+				if !utf8.ValidString(value) {
+					t.Errorf("invalid value %v for key %v in %v regions", value, key, countryCode)
+				}
+			}
 		}
 	}
 }
