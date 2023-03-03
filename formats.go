@@ -16,7 +16,7 @@ var formats = map[string]Format{
 	"AD": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "AD[1-7]0\\d",
+		PostalCodePattern: `AD[1-7]0\d`,
 	},
 	"AE": {
 		Locale:     Locale{Language: "ar"},
@@ -37,7 +37,7 @@ var formats = map[string]Format{
 	"AF": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"AG": {
 		Layout:   "%1\n%2\n%3\n%L",
@@ -46,18 +46,18 @@ var formats = map[string]Format{
 	"AI": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "(?:AI-)?2640",
+		PostalCodePattern: `(?:AI-)?2640`,
 	},
 	"AL": {
 		Layout:            "%1\n%2\n%3\n%P\n%L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"AM": {
 		Locale:            Locale{Language: "hy"},
 		Layout:            "%1\n%2\n%3\n%P\n%L\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "(?:37)?\\d{4}",
+		PostalCodePattern: `(?:37)?\d{4}`,
 		Regions: NewRegionMap(
 			"AG", "Aragatsotn", "AR", "Ararat", "AV", "Armavir",
 			"GR", "Gegharkunik", "KT", "Kotayk", "LO", "Lori",
@@ -74,7 +74,7 @@ var formats = map[string]Format{
 	"AR": {
 		Layout:            "%1\n%2\n%3\n%P %L\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "((?:[A-HJ-NP-Z])?\\d{4})([A-Z]{3})?",
+		PostalCodePattern: `((?:[A-HJ-NP-Z])?\d{4})([A-Z]{3})?`,
 		Regions: NewRegionMap(
 			"B", "Buenos Aires", "K", "Catamarca", "H", "Chaco",
 			"U", "Chubut", "C", "Ciudad Autónoma de Buenos Aires", "X", "Córdoba",
@@ -91,19 +91,19 @@ var formats = map[string]Format{
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		PostalCodeType:    PostalCodeTypeZip,
-		PostalCodePattern: "(96799)(?:[ \\-](\\d{4}))?",
+		PostalCodePattern: `(96799)(?:[ \-](\d{4}))?`,
 	},
 	"AT": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"AU": {
 		Layout:            "%1\n%2\n%3\n%L %R %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		LocalityType:      LocalityTypeSuburb,
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 		ShowRegionID:      true,
 		Regions: NewRegionMap(
 			"ACT", "Australian Capital Territory", "NSW", "New South Wales", "NT", "Northern Territory",
@@ -114,23 +114,23 @@ var formats = map[string]Format{
 	"AX": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "22\\d{3}",
+		PostalCodePattern: `22\d{3}`,
 	},
 	"AZ": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"BA": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"BB": {
 		Layout:            "%1\n%2\n%3\n%L, %R %P",
 		Required:          []Field{FieldLine1, FieldLocality},
 		RegionType:        RegionTypeParish,
-		PostalCodePattern: "BB\\d{5}",
+		PostalCodePattern: `BB\d{5}`,
 		Regions: NewRegionMap(
 			"01", "Christ Church", "02", "Saint Andrew", "03", "Saint George",
 			"04", "Saint James", "05", "Saint John", "06", "Saint Joseph",
@@ -141,44 +141,44 @@ var formats = map[string]Format{
 	"BD": {
 		Layout:            "%1\n%2\n%3\n%L - %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"BE": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"BG": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"BH": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "(?:\\d|1[0-2])\\d{2}",
+		PostalCodePattern: `(?:\d|1[0-2])\d{2}`,
 	},
 	"BL": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "9[78][01]\\d{2}",
+		PostalCodePattern: `9[78][01]\d{2}`,
 	},
 	"BM": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "[A-Z]{2} ?[A-Z0-9]{2}",
+		PostalCodePattern: `[A-Z]{2} ?[A-Z0-9]{2}`,
 	},
 	"BN": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "[A-Z]{2} ?\\d{4}",
+		PostalCodePattern: `[A-Z]{2} ?\d{4}`,
 	},
 	"BR": {
 		Layout:            "%1\n%2\n%3\n%S\n%L-%R\n%P",
 		Required:          []Field{FieldLine1, FieldRegion, FieldLocality, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		SublocalityType:   SublocalityTypeNeighborhood,
-		PostalCodePattern: "\\d{5}-?\\d{3}",
+		PostalCodePattern: `\d{5}-?\d{3}`,
 		ShowRegionID:      true,
 		Regions: NewRegionMap(
 			"AC", "Acre", "AL", "Alagoas", "AP", "Amapá",
@@ -213,18 +213,18 @@ var formats = map[string]Format{
 	"BT": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"BY": {
 		Layout:            "%1\n%2\n%3\n%P, %L\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 	},
 	"CA": {
 		Locale:            Locale{Language: "fr"},
 		Layout:            "%1\n%2\n%3\n%L %R %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
-		PostalCodePattern: "[ABCEGHJKLMNPRSTVXY]\\d[ABCEGHJ-NPRSTV-Z] ?\\d[ABCEGHJ-NPRSTV-Z]\\d",
+		PostalCodePattern: `[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJ-NPRSTV-Z] ?\d[ABCEGHJ-NPRSTV-Z]\d`,
 		ShowRegionID:      true,
 		Regions: NewRegionMap(
 			"AB", "Alberta", "BC", "British Columbia", "MB", "Manitoba",
@@ -249,12 +249,12 @@ var formats = map[string]Format{
 	"CH": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"CL": {
 		Layout:            "%1\n%2\n%3\n%P %L\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{7}",
+		PostalCodePattern: `\d{7}`,
 		Regions: NewRegionMap(
 			"AI", "Aisén del General Carlos Ibáñez del Campo", "AN", "Antofagasta", "AR", "Araucanía",
 			"AP", "Arica y Parinacota", "AT", "Atacama", "BI", "Biobío",
@@ -270,7 +270,7 @@ var formats = map[string]Format{
 		LocalLayout:       "%P\n%R%L%S\n%1\n%2\n%3",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		SublocalityType:   SublocalityTypeDistrict,
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 		Regions: NewRegionMap(
 			"AH", "Anhui Sheng", "BJ", "Beijing Shi", "CQ", "Chongqing Shi",
 			"FJ", "Fujian Sheng", "GS", "Gansu Sheng", "GD", "Guangdong Sheng",
@@ -304,7 +304,7 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%L, %R, %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		RegionType:        RegionTypeDepartment,
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 		ShowRegionID:      true,
 		Regions: NewRegionMap(
 			"AMA", "Amazonas", "ANT", "Antioquia", "ARA", "Arauca",
@@ -323,7 +323,7 @@ var formats = map[string]Format{
 	"CR": {
 		Layout:            "%1\n%2\n%3\n%R, %L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
-		PostalCodePattern: "\\d{4,5}|\\d{3}-\\d{4}",
+		PostalCodePattern: `\d{4,5}|\d{3}-\d{4}`,
 		Regions: NewRegionMap(
 			"A", "Alajuela", "C", "Cartago", "G", "Guanacaste",
 			"H", "Heredia", "L", "Limón", "P", "Puntarenas",
@@ -333,7 +333,7 @@ var formats = map[string]Format{
 	"CU": {
 		Layout:            "%1\n%2\n%3\n%L %R\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"15", "Artemisa", "09", "Camagüey", "08", "Ciego de Ávila",
 			"06", "Cienfuegos", "12", "Granma", "14", "Guantánamo",
@@ -347,7 +347,7 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%P %L\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
 		RegionType:        RegionTypeIsland,
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"CX": {
 		Layout:            "%1\n%2\n%3\n%L %R %P",
@@ -357,43 +357,43 @@ var formats = map[string]Format{
 	"CY": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"CZ": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{3} ?\\d{2}",
+		PostalCodePattern: `\d{3} ?\d{2}`,
 	},
 	"DE": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"DK": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"DO": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"DZ": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"EC": {
 		Layout:            "%1\n%2\n%3\n%P\n%L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 	},
 	"EE": {
 		Layout:            "%1\n%2\n%3\n%P %L %R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		RegionType:        RegionTypeCounty,
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"37", "Harjumaa", "39", "Hiiumaa", "45", "Ida-Virumaa",
 			"50", "Jõgevamaa", "52", "Järvamaa", "56", "Läänemaa",
@@ -406,7 +406,7 @@ var formats = map[string]Format{
 		Locale:            Locale{Language: "ar"},
 		Layout:            "%1\n%2\n%3\n%L\n%R\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"ALX", "Alexandria", "ASN", "Aswan", "AST", "Asyut",
 			"BH", "Beheira", "BNS", "Beni Suef", "C", "Cairo",
@@ -433,12 +433,12 @@ var formats = map[string]Format{
 	"EH": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"ES": {
 		Layout:            "%1\n%2\n%3\n%P %L %R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"C", "A Coruña", "VI", "Alava", "AB", "Albacete",
 			"A", "Alicante", "AL", "Almería", "O", "Asturias",
@@ -462,12 +462,12 @@ var formats = map[string]Format{
 	},
 	"ET": {
 		Layout:            "%1\n%2\n%3\n%P %L",
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"FI": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"FK": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
@@ -479,7 +479,7 @@ var formats = map[string]Format{
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		PostalCodeType:    PostalCodeTypeZip,
-		PostalCodePattern: "(9694[1-4])(?:[ \\-](\\d{4}))?",
+		PostalCodePattern: `(9694[1-4])(?:[ \-](\d{4}))?`,
 		Regions: NewRegionMap(
 			"TRK", "Chuuk", "KSA", "Kosrae", "PNI", "Pohnpei",
 			"YAP", "Yap",
@@ -487,34 +487,34 @@ var formats = map[string]Format{
 	},
 	"FO": {
 		Layout:            "%1\n%2\n%3\n%P %L",
-		PostalCodePattern: "\\d{3}",
+		PostalCodePattern: `\d{3}`,
 	},
 	"FR": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{2} ?\\d{3}",
+		PostalCodePattern: `\d{2} ?\d{3}`,
 		RegionType:        RegionTypeRegion,
 	},
 	"GB": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		LocalityType:      LocalityTypePostTown,
-		PostalCodePattern: "GIR ?0AA|(?:(?:AB|AL|B|BA|BB|BD|BF|BH|BL|BN|BR|BS|BT|BX|CA|CB|CF|CH|CM|CO|CR|CT|CV|CW|DA|DD|DE|DG|DH|DL|DN|DT|DY|E|EC|EH|EN|EX|FK|FY|G|GL|GY|GU|HA|HD|HG|HP|HR|HS|HU|HX|IG|IM|IP|IV|JE|KA|KT|KW|KY|L|LA|LD|LE|LL|LN|LS|LU|M|ME|MK|ML|N|NE|NG|NN|NP|NR|NW|OL|OX|PA|PE|PH|PL|PO|PR|RG|RH|RM|S|SA|SE|SG|SK|SL|SM|SN|SO|SP|SR|SS|ST|SW|SY|TA|TD|TF|TN|TQ|TR|TS|TW|UB|W|WA|WC|WD|WF|WN|WR|WS|WV|YO|ZE)(?:\\d[\\dA-Z]? ?\\d[ABD-HJLN-UW-Z]{2}))|BFPO ?\\d{1,4}",
+		PostalCodePattern: `GIR ?0AA|(?:(?:AB|AL|B|BA|BB|BD|BF|BH|BL|BN|BR|BS|BT|BX|CA|CB|CF|CH|CM|CO|CR|CT|CV|CW|DA|DD|DE|DG|DH|DL|DN|DT|DY|E|EC|EH|EN|EX|FK|FY|G|GL|GY|GU|HA|HD|HG|HP|HR|HS|HU|HX|IG|IM|IP|IV|JE|KA|KT|KW|KY|L|LA|LD|LE|LL|LN|LS|LU|M|ME|MK|ML|N|NE|NG|NN|NP|NR|NW|OL|OX|PA|PE|PH|PL|PO|PR|RG|RH|RM|S|SA|SE|SG|SK|SL|SM|SN|SO|SP|SR|SS|ST|SW|SY|TA|TD|TF|TN|TQ|TR|TS|TW|UB|W|WA|WC|WD|WF|WN|WR|WS|WV|YO|ZE)(?:\d[\dA-Z]? ?\d[ABD-HJLN-UW-Z]{2}))|BFPO ?\d{1,4}`,
 	},
 	"GE": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"GF": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "9[78]3\\d{2}",
+		PostalCodePattern: `9[78]3\d{2}`,
 	},
 	"GG": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "GY\\d[\\dA-Z]? ?\\d[ABD-HJLN-UW-Z]{2}",
+		PostalCodePattern: `GY\d[\dA-Z]? ?\d[ABD-HJLN-UW-Z]{2}`,
 	},
 	"GI": {
 		Layout:            "%1\n%2\n%3\n%P",
@@ -524,22 +524,22 @@ var formats = map[string]Format{
 	"GL": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "39\\d{2}",
+		PostalCodePattern: `39\d{2}`,
 	},
 	"GN": {
 		Layout:            "%P %1\n%2\n%3 %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{3}",
+		PostalCodePattern: `\d{3}`,
 	},
 	"GP": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "9[78][01]\\d{2}",
+		PostalCodePattern: `9[78][01]\d{2}`,
 	},
 	"GR": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{3} ?\\d{2}",
+		PostalCodePattern: `\d{3} ?\d{2}`,
 	},
 	"GS": {
 		Layout:            "%1\n%2\n%3\n\n%L\n%P",
@@ -549,18 +549,18 @@ var formats = map[string]Format{
 	"GT": {
 		Layout:            "%1\n%2\n%3\n%P- %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"GU": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		PostalCodeType:    PostalCodeTypeZip,
-		PostalCodePattern: "(969(?:[12]\\d|3[12]))(?:[ \\-](\\d{4}))?",
+		PostalCodePattern: `(969(?:[12]\d|3[12]))(?:[ \-](\d{4}))?`,
 	},
 	"GW": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"HK": {
 		Locale:       Locale{Language: "zh", Script: "Hant"},
@@ -584,13 +584,13 @@ var formats = map[string]Format{
 	"HM": {
 		Layout:            "%1\n%2\n%3\n%L %R %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"HN": {
 		Layout:            "%1\n%2\n%3\n%L, %R\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		RegionType:        RegionTypeDepartment,
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"AT", "Atlántida", "CH", "Choluteca", "CL", "Colón",
 			"CM", "Comayagua", "CP", "Copán", "CR", "Cortés",
@@ -603,22 +603,22 @@ var formats = map[string]Format{
 	"HR": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"HT": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"HU": {
 		Layout:            " %L\n%1\n%2\n%3\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"ID": {
 		Layout:            "%1\n%2\n%3\n%L\n%R %P",
 		Required:          []Field{FieldLine1, FieldRegion},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"AC", "Aceh", "BA", "Bali", "BT", "Banten",
 			"BE", "Bengkulu", "YO", "D.I. Yogyakarta", "JK", "DKI Jakarta",
@@ -640,7 +640,7 @@ var formats = map[string]Format{
 		RegionType:        RegionTypeCounty,
 		SublocalityType:   SublocalityTypeTownland,
 		PostalCodeType:    PostalCodeTypeEir,
-		PostalCodePattern: "[\\dA-Z]{3} ?[\\dA-Z]{4}",
+		PostalCodePattern: `[\dA-Z]{3} ?[\dA-Z]{4}`,
 		Regions: NewRegionMap(
 			"CW", "Co Carlow", "CN", "Co Cavan", "CE", "Co Clare",
 			"CO", "Co Cork", "DL", "Co Donegal", "D", "Co Dublin",
@@ -664,19 +664,19 @@ var formats = map[string]Format{
 	"IL": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}(?:\\d{2})?",
+		PostalCodePattern: `\d{5}(?:\d{2})?`,
 	},
 	"IM": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "IM\\d[\\dA-Z]? ?\\d[ABD-HJLN-UW-Z]{2}",
+		PostalCodePattern: `IM\d[\dA-Z]? ?\d[ABD-HJLN-UW-Z]{2}`,
 	},
 	"IN": {
 		Layout:            "%1\n%2\n%3\n%L %P\n%R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		PostalCodeType:    PostalCodeTypePin,
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 		Regions: NewRegionMap(
 			"AN", "Andaman & Nicobar", "AP", "Andhra Pradesh", "AR", "Arunachal Pradesh",
 			"AS", "Assam", "BR", "Bihar", "CH", "Chandigarh",
@@ -701,22 +701,22 @@ var formats = map[string]Format{
 	"IQ": {
 		Layout:            "%1\n%2\n%3\n%L, %R\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"IR": {
 		Layout:            "%R\n%L, %S\n%1\n%2\n%3\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
 		SublocalityType:   SublocalityTypeNeighborhood,
-		PostalCodePattern: "\\d{5}-?\\d{5}",
+		PostalCodePattern: `\d{5}-?\d{5}`,
 	},
 	"IS": {
 		Layout:            "%1\n%2\n%3\n%P %L",
-		PostalCodePattern: "\\d{3}",
+		PostalCodePattern: `\d{3}`,
 	},
 	"IT": {
 		Layout:            "%1\n%2\n%3\n%P %L %R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		ShowRegionID:      true,
 		Regions: NewRegionMap(
 			"AG", "Agrigento", "AL", "Alessandria", "AN", "Ancona",
@@ -760,7 +760,7 @@ var formats = map[string]Format{
 	"JE": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "JE\\d[\\dA-Z]? ?\\d[ABD-HJLN-UW-Z]{2}",
+		PostalCodePattern: `JE\d[\dA-Z]? ?\d[ABD-HJLN-UW-Z]{2}`,
 	},
 	"JM": {
 		Layout:     "%1\n%2\n%3\n%L\n%R",
@@ -777,7 +777,7 @@ var formats = map[string]Format{
 	"JO": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"JP": {
 		Locale:            Locale{Language: "ja"},
@@ -785,7 +785,7 @@ var formats = map[string]Format{
 		LocalLayout:       "〒%P\n%R%L\n%1\n%2\n%3",
 		Required:          []Field{FieldLine1, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypePrefecture,
-		PostalCodePattern: "\\d{3}-?\\d{4}",
+		PostalCodePattern: `\d{3}-?\d{4}`,
 		Regions: NewRegionMap(
 			"23", "Aichi", "05", "Akita", "02", "Aomori",
 			"12", "Chiba", "38", "Ehime", "18", "Fukui",
@@ -826,17 +826,17 @@ var formats = map[string]Format{
 	"KE": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"KG": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 	},
 	"KH": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5,6}",
+		PostalCodePattern: `\d{5,6}`,
 	},
 	"KI": {
 		Layout:     "%1\n%2\n%3\n%R\n%L",
@@ -864,7 +864,7 @@ var formats = map[string]Format{
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeDoSi,
 		SublocalityType:   SublocalityTypeDistrict,
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"26", "Busan", "43", "Chungcheongbuk-do", "44", "Chungcheongnam-do",
 			"27", "Daegu", "30", "Daejeon", "42", "Gangwon-do",
@@ -885,116 +885,116 @@ var formats = map[string]Format{
 	"KW": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"KY": {
 		Layout:            "%1\n%2\n%3\n%R %P",
 		Required:          []Field{FieldLine1, FieldRegion},
 		RegionType:        RegionTypeIsland,
-		PostalCodePattern: "KY\\d-\\d{4}",
+		PostalCodePattern: `KY\d-\d{4}`,
 	},
 	"KZ": {
 		Layout:            "%P\n%R\n%L\n%1\n%2\n%3",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 	},
 	"LA": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"LB": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "(?:\\d{4})(?: ?(?:\\d{4}))?",
+		PostalCodePattern: `(?:\d{4})(?: ?(?:\d{4}))?`,
 	},
 	"LI": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "948[5-9]|949[0-8]",
+		PostalCodePattern: `948[5-9]|949[0-8]`,
 	},
 	"LK": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"LR": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"LS": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{3}",
+		PostalCodePattern: `\d{3}`,
 	},
 	"LT": {
 		Layout:            "%1\n%2\n%3\n%P %L %R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		RegionType:        RegionTypeCounty,
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"LU": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"LV": {
 		Layout:            "%1\n%2\n%3\n%L, %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "LV-\\d{4}",
+		PostalCodePattern: `LV-\d{4}`,
 	},
 	"MA": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"MC": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "980\\d{2}",
+		PostalCodePattern: `980\d{2}`,
 	},
 	"MD": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"ME": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "8\\d{4}",
+		PostalCodePattern: `8\d{4}`,
 	},
 	"MF": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "9[78][01]\\d{2}",
+		PostalCodePattern: `9[78][01]\d{2}`,
 	},
 	"MG": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{3}",
+		PostalCodePattern: `\d{3}`,
 	},
 	"MH": {
 		Layout:            "%1\n%2\n%3\n%L %R %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		PostalCodeType:    PostalCodeTypeZip,
-		PostalCodePattern: "(969[67]\\d)(?:[ \\-](\\d{4}))?",
+		PostalCodePattern: `(969[67]\d)(?:[ \-](\d{4}))?`,
 	},
 	"MK": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"MM": {
 		Layout:            "%1\n%2\n%3\n%L, %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"MN": {
 		Layout:            "%1\n%2\n%3\n%L\n%R %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"MO": {
 		Layout:   "%1\n%2\n%3",
@@ -1005,34 +1005,34 @@ var formats = map[string]Format{
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		PostalCodeType:    PostalCodeTypeZip,
-		PostalCodePattern: "(9695[012])(?:[ \\-](\\d{4}))?",
+		PostalCodePattern: `(9695[012])(?:[ \-](\d{4}))?`,
 	},
 	"MQ": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "9[78]2\\d{2}",
+		PostalCodePattern: `9[78]2\d{2}`,
 	},
 	"MT": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "[A-Z]{3} ?\\d{2,4}",
+		PostalCodePattern: `[A-Z]{3} ?\d{2,4}`,
 	},
 	"MU": {
 		Layout:            "%1\n%2\n%3\n%P\n%L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{3}(?:\\d{2}|[A-Z]{2}\\d{3})",
+		PostalCodePattern: `\d{3}(?:\d{2}|[A-Z]{2}\d{3})`,
 	},
 	"MV": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"MX": {
 		Layout:            "%1\n%2\n%3\n%S\n%P %L, %R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		SublocalityType:   SublocalityTypeNeighborhood,
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		ShowRegionID:      true,
 		Regions: NewRegionMap(
 			"AGU", "Aguascalientes", "BCN", "Baja California", "BCS", "Baja California Sur",
@@ -1053,7 +1053,7 @@ var formats = map[string]Format{
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		SublocalityType:   SublocalityTypeVillageTownship,
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"01", "Johor", "02", "Kedah", "03", "Kelantan",
 			"14", "Kuala Lumpur", "15", "Labuan", "04", "Melaka",
@@ -1066,7 +1066,7 @@ var formats = map[string]Format{
 	"MZ": {
 		Layout:            "%1\n%2\n%3\n%P %L%R",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 		Regions: NewRegionMap(
 			"P", "Cabo Delgado", "MPM", "Cidade de Maputo", "G", "Gaza",
 			"I", "Inhambane", "B", "Manica", "L", "Maputo",
@@ -1077,17 +1077,17 @@ var formats = map[string]Format{
 	"NA": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"NC": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "988\\d{2}",
+		PostalCodePattern: `988\d{2}`,
 	},
 	"NE": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"NF": {
 		Layout:            "%1\n%2\n%3\n%L %R %P",
@@ -1098,7 +1098,7 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%S\n%L %P\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
 		RegionType:        RegionTypeState,
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 		Regions: NewRegionMap(
 			"AB", "Abia", "AD", "Adamawa", "AK", "Akwa Ibom",
 			"AN", "Anambra", "BA", "Bauchi", "BY", "Bayelsa",
@@ -1119,7 +1119,7 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%P\n%L, %R",
 		Required:          []Field{FieldLine1, FieldLocality},
 		RegionType:        RegionTypeDepartment,
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"BO", "Boaco", "CA", "Carazo", "CI", "Chinandega",
 			"CO", "Chontales", "AN", "Costa Caribe Norte", "AS", "Costa Caribe Sur",
@@ -1132,18 +1132,18 @@ var formats = map[string]Format{
 	"NL": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{4} ?[A-Z]{2}",
+		PostalCodePattern: `\d{4} ?[A-Z]{2}`,
 	},
 	"NO": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		LocalityType:      LocalityTypePostTown,
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"NP": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"NR": {
 		Layout:     "%1\n%2\n%3\n%R",
@@ -1160,12 +1160,12 @@ var formats = map[string]Format{
 	"NZ": {
 		Layout:            "%1\n%2\n%3\n%S\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"OM": {
 		Layout:            "%1\n%2\n%3\n%P\n%L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "(?:PC )?\\d{3}",
+		PostalCodePattern: `(?:PC )?\d{3}`,
 	},
 	"PA": {
 		Layout:   "%1\n%2\n%3\n%L\n%R",
@@ -1182,7 +1182,7 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%L %P\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
 		LocalityType:      LocalityTypeDistrict,
-		PostalCodePattern: "(?:LIMA \\d{1,2}|CALLAO 0?\\d)|[0-2]\\d{4}",
+		PostalCodePattern: `(?:LIMA \d{1,2}|CALLAO 0?\d)|[0-2]\d{4}`,
 		Regions: NewRegionMap(
 			"AMA", "Amazonas", "ANC", "Ancash", "APU", "Apurimac",
 			"ARE", "Arequipa", "AYA", "Ayacucho", "CAJ", "Cajamarca",
@@ -1199,12 +1199,12 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%P %L %R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeIsland,
-		PostalCodePattern: "987\\d{2}",
+		PostalCodePattern: `987\d{2}`,
 	},
 	"PG": {
 		Layout:            "%1\n%2\n%3\n%L %P %R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
-		PostalCodePattern: "\\d{3}",
+		PostalCodePattern: `\d{3}`,
 		Regions: NewRegionMap(
 			"NSB", "Bougainville", "CPM", "Central", "CPK", "Chimbu",
 			"EBR", "East New Britain", "ESW", "East Sepik", "EHG", "Eastern Highlands",
@@ -1219,7 +1219,7 @@ var formats = map[string]Format{
 	"PH": {
 		Layout:            "%1\n%2\n%3\n%S, %L\n%P %R",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 		Regions: NewRegionMap(
 			"ABR", "Abra", "AGN", "Agusan del Norte", "AGS", "Agusan del Sur",
 			"AKL", "Aklan", "ALB", "Albay", "ANT", "Antique",
@@ -1254,19 +1254,19 @@ var formats = map[string]Format{
 	"PK": {
 		Layout:            "%1\n%2\n%3\n%L-%P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"PL": {
 		Layout: "%1\n%2\n%3\n%P %L",
 		Required: []Field{
 			FieldLine1, FieldLocality, FieldPostalCode,
 		},
-		PostalCodePattern: "\\d{2}-\\d{3}",
+		PostalCodePattern: `\d{2}-\d{3}`,
 	},
 	"PM": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "9[78]5\\d{2}",
+		PostalCodePattern: `9[78]5\d{2}`,
 	},
 	"PN": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
@@ -1277,44 +1277,44 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		PostalCodeType:    PostalCodeTypeZip,
-		PostalCodePattern: "(00[679]\\d{2})(?:[ \\-](\\d{4}))?",
+		PostalCodePattern: `(00[679]\d{2})(?:[ \-](\d{4}))?`,
 	},
 	"PT": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{4}-\\d{3}",
+		PostalCodePattern: `\d{4}-\d{3}`,
 	},
 	"PW": {
 		Layout:            "%1\n%2\n%3\n%L %R %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		PostalCodeType:    PostalCodeTypeZip,
-		PostalCodePattern: "(969(?:39|40))(?:[ \\-](\\d{4}))?",
+		PostalCodePattern: `(969(?:39|40))(?:[ \-](\d{4}))?`,
 	},
 	"PY": {
 		Layout:            "%1\n%2\n%3\n%P %L",
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"RE": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "9[78]4\\d{2}",
+		PostalCodePattern: `9[78]4\d{2}`,
 	},
 	"RO": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 	},
 	"RS": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5,6}",
+		PostalCodePattern: `\d{5,6}`,
 	},
 	"RU": {
 		Layout:            "%1\n%2\n%3\n%L\n%R\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeOblast,
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 		Regions: NewRegionMap(
 			"AD", "Adygeya, Respublika", "AL", "Altay, Respublika", "ALT", "Altayskiy kray",
 			"AMU", "Amurskaya oblast", "ARK", "Arkhangelskaya oblast", "AST", "Astrakhanskaya oblast",
@@ -1379,7 +1379,7 @@ var formats = map[string]Format{
 	"SA": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"SC": {
 		Layout:     "%1\n%2\n%3\n%L\n%R",
@@ -1390,54 +1390,54 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
 		LocalityType:      LocalityTypeDistrict,
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"SE": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		LocalityType:      LocalityTypePostTown,
-		PostalCodePattern: "\\d{3} ?\\d{2}",
+		PostalCodePattern: `\d{3} ?\d{2}`,
 	},
 	"SG": {
 		Layout:            "%1\n%2\n%3\n%P",
 		Required:          []Field{FieldLine1, FieldPostalCode},
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 	},
 	"SH": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "(?:ASCN|STHL) 1ZZ",
+		PostalCodePattern: `(?:ASCN|STHL) 1ZZ`,
 	},
 	"SI": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"SJ": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		LocalityType:      LocalityTypePostTown,
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"SK": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{3} ?\\d{2}",
+		PostalCodePattern: `\d{3} ?\d{2}`,
 	},
 	"SM": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldPostalCode},
-		PostalCodePattern: "4789\\d",
+		PostalCodePattern: `4789\d`,
 	},
 	"SN": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 	"SO": {
 		Layout:            "%1\n%2\n%3\n%L, %R %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
-		PostalCodePattern: "[A-Z]{2} ?\\d{5}",
+		PostalCodePattern: `[A-Z]{2} ?\d{5}`,
 		ShowRegionID:      true,
 		Regions: NewRegionMap(
 			"AW", "Awdal", "BK", "Bakool", "BN", "Banaadir",
@@ -1461,7 +1461,7 @@ var formats = map[string]Format{
 	"SV": {
 		Layout:            "%1\n%2\n%3\n%P-%L\n%R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
-		PostalCodePattern: "CP [1-3][1-7][0-2]\\d",
+		PostalCodePattern: `CP [1-3][1-7][0-2]\d`,
 		Regions: NewRegionMap(
 			"AH", "Ahuachapán", "CA", "Cabañas", "CH", "Chalatenango",
 			"CU", "Cuscatlán", "LI", "La Libertad", "PA", "La Paz",
@@ -1478,7 +1478,7 @@ var formats = map[string]Format{
 	"SZ": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "[HLMS]\\d{3}",
+		PostalCodePattern: `[HLMS]\d{3}`,
 	},
 	"TA": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
@@ -1495,7 +1495,7 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%S, %L\n%R %P",
 		LocalLayout:       "%1\n%2\n%3\n%S %L\n%R %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"37", "Amnat Charoen", "15", "Ang Thong", "10", "Bangkok",
 			"38", "Bueng Kan", "31", "Buri Ram", "24", "Chachoengsao",
@@ -1556,23 +1556,23 @@ var formats = map[string]Format{
 	"TJ": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 	},
 	"TM": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 	},
 	"TN": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"TR": {
 		Layout:            "%1\n%2\n%3\n%P %L/%R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		LocalityType:      LocalityTypeDistrict,
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"01", "Adana", "02", "Adıyaman", "03", "Afyon",
 			"04", "Ağrı", "68", "Aksaray", "05", "Amasya",
@@ -1614,7 +1614,7 @@ var formats = map[string]Format{
 		LocalLayout:       "%P\n%R%L\n%1\n%2\n%3",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeCounty,
-		PostalCodePattern: "\\d{3}(?:\\d{2,3})?",
+		PostalCodePattern: `\d{3}(?:\d{2,3})?`,
 		Regions: NewRegionMap(
 			"CHA", "Changhua County", "CYI", "Chiayi City", "CYQ", "Chiayi County",
 			"HSZ", "Hsinchu City", "HSQ", "Hsinchu County", "HUA", "Hualien County",
@@ -1639,14 +1639,14 @@ var formats = map[string]Format{
 	"TZ": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{4,5}",
+		PostalCodePattern: `\d{4,5}`,
 	},
 	"UA": {
 		Locale:            Locale{Language: "uk"},
 		Layout:            "%1\n%2\n%3\n%L\n%R\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		RegionType:        RegionTypeOblast,
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"43", "Avtonomna Respublika Krym", "71", "Cherkaska oblast", "74", "Chernihivska oblast",
 			"77", "Chernivetska oblast", "12", "Dnipropetrovska oblast", "14", "Donetska oblast",
@@ -1687,7 +1687,7 @@ var formats = map[string]Format{
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		PostalCodeType:    PostalCodeTypeZip,
-		PostalCodePattern: "(\\d{5})(?:[ \\-](\\d{4}))?",
+		PostalCodePattern: `(\d{5})(?:[ \-](\d{4}))?`,
 		ShowRegionID:      true,
 		Regions: NewRegionMap(
 			"AL", "Alabama", "AK", "Alaska", "AS", "American Samoa",
@@ -1716,7 +1716,7 @@ var formats = map[string]Format{
 	"UY": {
 		Layout:            "%1\n%2\n%3\n%P %L %R",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"AR", "Artigas", "CA", "Canelones", "CL", "Cerro Largo",
 			"CO", "Colonia", "DU", "Durazno", "FS", "Flores",
@@ -1730,7 +1730,7 @@ var formats = map[string]Format{
 	"UZ": {
 		Layout:            "%1\n%2\n%3\n%P %L\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{6}",
+		PostalCodePattern: `\d{6}`,
 	},
 	"VA": {
 		Layout:            "%1\n%2\n%3\n%P %L",
@@ -1740,13 +1740,13 @@ var formats = map[string]Format{
 	"VC": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "VC\\d{4}",
+		PostalCodePattern: `VC\d{4}`,
 	},
 	"VE": {
 		Layout:            "%1\n%2\n%3\n%L %P, %R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		RegionType:        RegionTypeState,
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 		Regions: NewRegionMap(
 			"Z", "Amazonas", "B", "Anzoátegui", "C", "Apure",
 			"D", "Aragua", "E", "Barinas", "F", "Bolívar",
@@ -1762,20 +1762,20 @@ var formats = map[string]Format{
 	"VG": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1},
-		PostalCodePattern: "VG\\d{4}",
+		PostalCodePattern: `VG\d{4}`,
 	},
 	"VI": {
 		Layout:            "%1\n%2\n%3\n%L %R %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		PostalCodeType:    PostalCodeTypeZip,
-		PostalCodePattern: "(008(?:(?:[0-4]\\d)|(?:5[01])))(?:[ \\-](\\d{4}))?",
+		PostalCodePattern: `(008(?:(?:[0-4]\d)|(?:5[01])))(?:[ \-](\d{4}))?`,
 	},
 	"VN": {
 		Locale:            Locale{Language: "vi"},
 		Layout:            "%1\n%2\n%3\n%L\n%R %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}\\d?",
+		PostalCodePattern: `\d{5}\d?`,
 		Regions: NewRegionMap(
 			"44", "An Giang Province", "43", "Ba Ria-Vung Tau Province", "55", "Bac Lieu Province",
 			"54", "Bac Giang Province", "53", "Bac Kan Province", "56", "Bac Ninh Province",
@@ -1826,26 +1826,26 @@ var formats = map[string]Format{
 	"WF": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "986\\d{2}",
+		PostalCodePattern: `986\d{2}`,
 	},
 	"XK": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "[1-7]\\d{4}",
+		PostalCodePattern: `[1-7]\d{4}`,
 	},
 	"YT": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "976\\d{2}",
+		PostalCodePattern: `976\d{2}`,
 	},
 	"ZA": {
 		Layout:            "%1\n%2\n%3\n%S\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		PostalCodePattern: "\\d{4}",
+		PostalCodePattern: `\d{4}`,
 	},
 	"ZM": {
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: "\\d{5}",
+		PostalCodePattern: `\d{5}`,
 	},
 }
