@@ -156,7 +156,7 @@ var formats = map[string]Format{
 	"BH": {
 		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
-		PostalCodePattern: `(?:\d|1[0-2])\d{2}`,
+		PostalCodePattern: `(?:^|\b)(?:1[0-2]|[1-9])\d{2}(?:$|\b)`,
 	},
 	"BL": {
 		Layout:            "%1\n%2\n%3\n%P %L",
