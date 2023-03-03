@@ -1570,7 +1570,7 @@ var formats = map[string]Format{
 	},
 	"TR": {
 		Layout:            "%1\n%2\n%3\n%P %L/%R",
-		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
+		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		LocalityType:      LocalityTypeDistrict,
 		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
