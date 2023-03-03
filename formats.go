@@ -493,6 +493,7 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%P %L",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		PostalCodePattern: "\\d{2} ?\\d{3}",
+		RegionType:        RegionTypeRegion,
 	},
 	"GB": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",

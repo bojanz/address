@@ -109,12 +109,13 @@ const (
 	RegionTypeOblast
 	RegionTypeParish
 	RegionTypePrefecture
+	RegionTypeRegion
 	RegionTypeState
 )
 
 var regionTypeNames = [...]string{
-	"province", "area", "canton", "department", "distict", "do_si",
-	"emirate", "island", "oblast", "parish", "prefecture", "state",
+	"province", "area", "canton", "department", "distict", "do_si", "emirate",
+	"island", "oblast", "parish", "prefecture", "region", "state",
 }
 
 // String returns the string representation of r.
