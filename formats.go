@@ -1848,4 +1848,14 @@ var formats = map[string]Format{
 		Required:          []Field{FieldLine1, FieldLocality},
 		PostalCodePattern: `\d{5}`,
 	},
+	"ZW": {
+		Layout:   "%1\n%2\n%3\n%L\n%R",
+		Required: []Field{FieldLine1, FieldLocality, FieldRegion},
+		Regions: NewRegionMap(
+			"BU", "Bulawayo", "HA", "Harare", "MA", "Manicaland",
+			"MC", "Mashonaland Central", "ME", "Mashonaland East", "MW", "Mashonaland West",
+			"MV", "Masvingo", "MN", "Matabeleland North", "MS", "Matabeleland South",
+			"MI", "Midlands",
+		),
+	},
 }
