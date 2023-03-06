@@ -6,6 +6,7 @@ package address_test
 import (
 	"encoding/json"
 	"reflect"
+	"regexp"
 	"testing"
 	"unicode/utf8"
 
@@ -336,6 +337,15 @@ func TestGetFormats(t *testing.T) {
 		_, ok := formats[countryCode]
 		if !ok {
 			t.Errorf("no %v address format found.", countryCode)
+		}
+	}
+}
+
+func TestGetFormats_ValidPostalCodePatterns(t *testing.T) {
+	for countryCode, format := range address.GetFormats() {
+		_, err := regexp.Compile(format.PostalCodePattern)
+		if err != nil {
+			t.Errorf("invalid %v postal code pattern: %v", countryCode, err)
 		}
 	}
 }
