@@ -5,9 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v4
         with:
-          go-version: 1.19.x
+          go-version: 1.20.x
 
       - name: Install tools
         run: |
@@ -15,9 +15,9 @@ jobs:
           go install honnef.co/go/tools/cmd/staticcheck@latest
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-build-${{ hashFiles('**/go.sum') }}
@@ -36,19 +36,19 @@ jobs:
   test:
     strategy:
       matrix:
-        go: ['1.17', '1.18', '1.19']
+        go: ['1.18', '1.19', '1.20']
     name: test @ Go ${{ matrix.go }}
     runs-on: ubuntu-latest
     steps:
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v4
       with:
         go-version: ${{ matrix.go }}
 
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       with:
         path: ~/go/pkg/mod
         key: ${{ runner.os }}-build-${{ hashFiles('**/go.sum') }}
