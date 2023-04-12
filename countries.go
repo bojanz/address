@@ -4,7 +4,7 @@
 package address
 
 // CLDRVersion is the CLDR version from which the country list is derived.
-const CLDRVersion = "42.0.0"
+const CLDRVersion = "43.0.0"
 
 var countries = map[string]string{
 	"AF": "Afghanistan",
@@ -199,6 +199,7 @@ var countries = map[string]string{
 	"RE": "Réunion",
 	"WS": "Samoa",
 	"SM": "San Marino",
+	"CQ": "Sark",
 	"SA": "Saudi Arabia",
 	"SN": "Senegal",
 	"RS": "Serbia",
@@ -241,10 +242,10 @@ var countries = map[string]string{
 	"TT": "Trinidad & Tobago",
 	"TA": "Tristan da Cunha",
 	"TN": "Tunisia",
-	"TR": "Turkey",
 	"TM": "Turkmenistan",
 	"TC": "Turks & Caicos Islands",
 	"TV": "Tuvalu",
+	"TR": "Türkiye",
 	"UM": "U.S. Outlying Islands",
 	"VI": "U.S. Virgin Islands",
 	"UG": "Uganda",
