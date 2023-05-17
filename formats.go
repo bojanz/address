@@ -243,7 +243,7 @@ var formats = map[string]Format{
 		),
 	},
 	"CC": {
-		Layout:            "%1\n%2\n%3\n%L %R %P",
+		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
 		PostalCodePattern: "6799",
 	},
@@ -351,7 +351,7 @@ var formats = map[string]Format{
 		PostalCodePattern: `\d{4}`,
 	},
 	"CX": {
-		Layout:            "%1\n%2\n%3\n%L %R %P",
+		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
 		PostalCodePattern: "6798",
 	},
@@ -583,7 +583,7 @@ var formats = map[string]Format{
 		),
 	},
 	"HM": {
-		Layout:            "%1\n%2\n%3\n%L %R %P",
+		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
 		PostalCodePattern: `\d{4}`,
 	},
@@ -1091,7 +1091,7 @@ var formats = map[string]Format{
 		PostalCodePattern: `\d{4}`,
 	},
 	"NF": {
-		Layout:            "%1\n%2\n%3\n%L %R %P",
+		Layout:            "%1\n%2\n%3\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality},
 		PostalCodePattern: "2899",
 	},
