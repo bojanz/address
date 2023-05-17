@@ -218,6 +218,7 @@ var formats = map[string]Format{
 	"BY": {
 		Layout:            "%1\n%2\n%3\n%P, %L\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
+		RegionType:        RegionTypeRegion,
 		PostalCodePattern: `\d{6}`,
 	},
 	"CA": {
@@ -1313,7 +1314,7 @@ var formats = map[string]Format{
 	"RU": {
 		Layout:            "%1\n%2\n%3\n%L\n%R\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
-		RegionType:        RegionTypeOblast,
+		RegionType:        RegionTypeRegion,
 		PostalCodePattern: `\d{6}`,
 		Regions: NewRegionMap(
 			"AD", "Adygeya, Respublika", "AL", "Altay, Respublika", "ALT", "Altayskiy kray",
@@ -1645,7 +1646,7 @@ var formats = map[string]Format{
 		Locale:            Locale{Language: "uk"},
 		Layout:            "%1\n%2\n%3\n%L\n%R\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
-		RegionType:        RegionTypeOblast,
+		RegionType:        RegionTypeRegion,
 		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"43", "Avtonomna Respublika Krym", "71", "Cherkaska oblast", "74", "Chernihivska oblast",
