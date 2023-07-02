@@ -1291,8 +1291,16 @@ var formats = map[string]Format{
 		PostalCodePattern: `(969(?:39|40))(?:[ \-](\d{4}))?`,
 	},
 	"PY": {
-		Layout:            "%1\n%2\n%3\n%P %L",
+		Layout:            "%1\n%2\n%3\n%P %L %R",
 		PostalCodePattern: `\d{4}`,
+		Regions: NewRegionMap(
+			"16", "Alto Paraguay", "10", "Alto Paraná", "13", "Amambay",
+			"ASU", "Asunción", "19", "Boquerón", "5", "Caaguazú",
+			"6", "Caazapá", "14", "Canindeyú", "11", "Central",
+			"1", "Concepción", "3", "Cordillera", "4", "Guairá",
+			"7", "Itapúa", "8", "Misiones", "9", "Paraguarí",
+			"15", "Presidente Hayes", "2", "San Pedro", "12", "Ñeembucú",
+		),
 	},
 	"RE": {
 		Layout:            "%1\n%2\n%3\n%P %L",
@@ -1384,6 +1392,17 @@ var formats = map[string]Format{
 		Layout:     "%1\n%2\n%3\n%L\n%R",
 		Required:   []Field{FieldLine1, FieldLocality},
 		RegionType: RegionTypeIsland,
+		Regions: NewRegionMap(
+			"02", "Anse Boileau", "03", "Anse Etoile", "05", "Anse Royale",
+			"01", "Anse aux Pins", "04", "Au Cap", "06", "Baie Lazare",
+			"07", "Baie Sainte Anne", "08", "Beau Vallon", "09", "Bel Air",
+			"10", "Bel Ombre", "11", "Cascade", "16", "English River",
+			"12", "Glacis", "13", "Grand Anse Mahe", "14", "Grand Anse Praslin",
+			"26", "Ile Perseverance I", "27", "Ile Perseverance II", "15", "La Digue",
+			"24", "Les Mamelles", "17", "Mont Buxton", "18", "Mont Fleuri",
+			"19", "Plaisance", "20", "Pointe Larue", "21", "Port Glaud",
+			"25", "Roche Caiman", "22", "Saint Louis", "23", "Takamaka",
+		),
 	},
 	"SD": {
 		Layout:            "%1\n%2\n%3\n%L\n%P",
