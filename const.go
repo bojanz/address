@@ -64,6 +64,7 @@ const (
 	LocalityTypeDistrict
 	LocalityTypePostTown
 	LocalityTypeSuburb
+	LocalityTypeTownCity
 )
 
 var localityTypeNames = [...]string{"city", "district", "post_town", "suburb"}
