@@ -112,7 +112,9 @@ func TestFormat_CheckPostalCode(t *testing.T) {
 		// Invalid postal code.
 		{"FR", "75002B", false},
 		// Country with no predefined pattern.
-		{"AG", "AG123", true},
+		{"AG", "AG123", false},
+		// Country with no predefined pattern.
+		{"AG", "", true},
 	}
 
 	for _, tt := range tests {
