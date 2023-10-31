@@ -83,11 +83,16 @@ func (f Format) CheckRegion(region string) bool {
 //
 // An empty postal code is considered valid.
 func (f Format) CheckPostalCode(postalCode string) bool {
-	if postalCode == "" || f.PostalCodePattern == "" {
+	if postalCode == "" {
 		return true
 	}
-	rx := regexp.MustCompile(f.PostalCodePattern)
+	rx := regexp.MustCompile(f.PostalCodeValidationPattern())
 	return rx.MatchString(postalCode)
+}
+
+// PostalCodeValidationPattern returns the full regex pattern for validating the postal code.
+func (f *Format) PostalCodeValidationPattern() string {
+	return "^" + f.PostalCodePattern + "$"
 }
 
 // SelectLayout selects the correct layout for the given locale.
