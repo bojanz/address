@@ -1159,6 +1159,7 @@ var formats = map[string]Format{
 	"NZ": {
 		Layout:            "%1\n%2\n%3\n%S\n%L %P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
+		LocalityType:      LocalityTypeTownCity,
 		PostalCodePattern: `\d{4}`,
 	},
 	"OM": {
