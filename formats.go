@@ -1439,8 +1439,8 @@ var formats = map[string]Format{
 		PostalCodePattern: `\d{3} ?\d{2}`,
 	},
 	"SG": {
-		Layout:            "%1\n%2\n%3\n%P",
-		Required:          []Field{FieldLine1, FieldPostalCode},
+		Layout:            "%1\n%2\n%3\n%L %P",
+		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		PostalCodePattern: `\d{6}`,
 	},
 	"SH": {
