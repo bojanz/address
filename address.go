@@ -37,18 +37,19 @@ func (a Address) IsEmpty() bool {
 
 // Format represents an address format.
 type Format struct {
-	Locale            Locale          `json:"locale,omitempty"`
-	Layout            string          `json:"layout,omitempty"`
-	LocalLayout       string          `json:"local_layout,omitempty"`
-	Required          []Field         `json:"required,omitempty"`
-	SublocalityType   SublocalityType `json:"sublocality_type,omitempty"`
-	LocalityType      LocalityType    `json:"locality_type,omitempty"`
-	RegionType        RegionType      `json:"region_type,omitempty"`
-	PostalCodeType    PostalCodeType  `json:"postal_code_type,omitempty"`
-	PostalCodePattern string          `json:"postal_code_pattern,omitempty"`
-	ShowRegionID      bool            `json:"show_region_id,omitempty"`
-	Regions           RegionMap       `json:"regions,omitempty"`
-	LocalRegions      RegionMap       `json:"local_regions,omitempty"`
+	Locale            Locale           `json:"locale,omitempty"`
+	Layout            string           `json:"layout,omitempty"`
+	LocalLayout       string           `json:"local_layout,omitempty"`
+	Required          []Field          `json:"required,omitempty"`
+	Defaults          map[Field]string `json:"defaults,omitempty"`
+	SublocalityType   SublocalityType  `json:"sublocality_type,omitempty"`
+	LocalityType      LocalityType     `json:"locality_type,omitempty"`
+	RegionType        RegionType       `json:"region_type,omitempty"`
+	PostalCodeType    PostalCodeType   `json:"postal_code_type,omitempty"`
+	PostalCodePattern string           `json:"postal_code_pattern,omitempty"`
+	ShowRegionID      bool             `json:"show_region_id,omitempty"`
+	Regions           RegionMap        `json:"regions,omitempty"`
+	LocalRegions      RegionMap        `json:"local_regions,omitempty"`
 }
 
 // IsRequired returns whether the given field is required.
