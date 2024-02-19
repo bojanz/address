@@ -254,6 +254,7 @@ var formats = map[string]Format{
 	"CL": {
 		Layout:            "%1\n%2\n%3\n%P %L\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
+		RegionType:        RegionTypeRegion,
 		PostalCodePattern: `\d{7}`,
 		Regions: NewRegionMap(
 			"AI", "Aisén del General Carlos Ibáñez del Campo", "AN", "Antofagasta", "AR", "Araucanía",
