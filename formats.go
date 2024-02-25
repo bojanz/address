@@ -1204,7 +1204,7 @@ var formats = map[string]Format{
 		Layout:            "%1\n%2\n%3\n%L %P\n%R",
 		Required:          []Field{FieldLine1, FieldLocality},
 		LocalityType:      LocalityTypeDistrict,
-		PostalCodePattern: `(?:LIMA \d{1,2}|CALLAO 0?\d)|[0-2]\d{4}`,
+		PostalCodePattern: `[0-2]\d{4}`,
 		Regions: NewRegionMap(
 			"AMA", "Amazonas", "ANC", "Ancash", "APU", "Apurimac",
 			"ARE", "Arequipa", "AYA", "Ayacucho", "CAJ", "Cajamarca",
