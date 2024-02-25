@@ -127,7 +127,7 @@ var formats = map[string]Format{
 	},
 	"BB": {
 		Layout:            "%1\n%2\n%3\n%L, %R %P",
-		Required:          []Field{FieldLine1, FieldLocality},
+		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		RegionType:        RegionTypeParish,
 		PostalCodePattern: `BB\d{5}`,
 		Regions: NewRegionMap(
@@ -253,7 +253,7 @@ var formats = map[string]Format{
 	},
 	"CL": {
 		Layout:            "%1\n%2\n%3\n%P %L\n%R",
-		Required:          []Field{FieldLine1, FieldLocality},
+		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		RegionType:        RegionTypeRegion,
 		PostalCodePattern: `\d{7}`,
 		Regions: NewRegionMap(
@@ -406,7 +406,7 @@ var formats = map[string]Format{
 	"EG": {
 		Locale:            Locale{Language: "ar"},
 		Layout:            "%1\n%2\n%3\n%L\n%R\n%P",
-		Required:          []Field{FieldLine1, FieldLocality},
+		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"ALX", "Alexandria", "ASN", "Aswan", "AST", "Asyut",
@@ -842,7 +842,7 @@ var formats = map[string]Format{
 	},
 	"KI": {
 		Layout:     "%1\n%2\n%3\n%R\n%L",
-		Required:   []Field{FieldLine1, FieldLocality},
+		Required:   []Field{FieldLine1, FieldLocality, FieldRegion},
 		RegionType: RegionTypeIsland,
 		Regions: NewRegionMap(
 			"G", "Gilbert Islands", "L", "Line Islands", "P", "Phoenix Islands",
@@ -1071,7 +1071,7 @@ var formats = map[string]Format{
 	},
 	"MY": {
 		Layout:            "%1\n%2\n%3\n%S\n%P %L\n%R",
-		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
+		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeState,
 		SublocalityType:   SublocalityTypeVillageTownship,
 		PostalCodePattern: `\d{5}`,
@@ -1202,7 +1202,7 @@ var formats = map[string]Format{
 	},
 	"PE": {
 		Layout:            "%1\n%2\n%3\n%L %P\n%R",
-		Required:          []Field{FieldLine1, FieldLocality},
+		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		LocalityType:      LocalityTypeDistrict,
 		PostalCodePattern: `[0-2]\d{4}`,
 		Regions: NewRegionMap(
@@ -1538,7 +1538,7 @@ var formats = map[string]Format{
 		Locale:            Locale{Language: "th"},
 		Layout:            "%1\n%2\n%3\n%S, %L\n%R %P",
 		LocalLayout:       "%1\n%2\n%3\n%S %L\n%R %P",
-		Required:          []Field{FieldLine1, FieldLocality},
+		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
 			"37", "Amnat Charoen", "15", "Ang Thong", "10", "Bangkok",
@@ -1817,7 +1817,7 @@ var formats = map[string]Format{
 	"VN": {
 		Locale:            Locale{Language: "vi"},
 		Layout:            "%1\n%2\n%3\n%L\n%R %P",
-		Required:          []Field{FieldLine1, FieldLocality},
+		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
 		PostalCodePattern: `\d{5}\d?`,
 		Regions: NewRegionMap(
 			"44", "An Giang Province", "43", "Ba Ria-Vung Tau Province", "55", "Bac Lieu Province",
