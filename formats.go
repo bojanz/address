@@ -1619,7 +1619,7 @@ var formats = map[string]Format{
 		LocalityType:      LocalityTypeDistrict,
 		PostalCodePattern: `\d{5}`,
 		Regions: NewRegionMap(
-			"01", "Adana", "02", "Adıyaman", "03", "Afyon",
+			"01", "Adana", "02", "Adıyaman", "03", "Afyonkarahisar",
 			"04", "Ağrı", "68", "Aksaray", "05", "Amasya",
 			"06", "Ankara", "07", "Antalya", "75", "Ardahan",
 			"08", "Artvin", "09", "Aydın", "10", "Balıkesir",
