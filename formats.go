@@ -313,7 +313,7 @@ var formats = map[string]Format{
 			"CAL", "Caldas", "CAQ", "Caquetá", "CAS", "Casanare",
 			"CAU", "Cauca", "CES", "Cesar", "COR", "Córdoba",
 			"CUN", "Cundinamarca", "CHO", "Chocó", "DC", "Distrito Capital de Bogotá",
-			"GUA", "Guanía", "GUV", "Guaviare", "HUI", "Huila",
+			"GUA", "Guainía", "GUV", "Guaviare", "HUI", "Huila",
 			"LAG", "La Guajira", "MAG", "Magdalena", "MET", "Meta",
 			"NAR", "Nariño", "NSA", "Norte de Santander", "PUT", "Putumayo",
 			"QUI", "Quindío", "RIS", "Risaralda", "SAP", "San Andrés, Providencia y Santa Catalina",
