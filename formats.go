@@ -1131,7 +1131,7 @@ var formats = map[string]Format{
 			"KD", "Kaduna", "KN", "Kano", "KT", "Katsina",
 			"KE", "Kebbi", "KO", "Kogi", "KW", "Kwara",
 			"LA", "Lagos", "NA", "Nasarawa", "NI", "Niger",
-			"OG", "Ogun State", "ON", "Ondo", "OS", "Osun",
+			"OG", "Ogun", "ON", "Ondo", "OS", "Osun",
 			"OY", "Oyo", "PL", "Plateau", "RI", "Rivers",
 			"SO", "Sokoto", "TA", "Taraba", "YO", "Yobe",
 			"ZA", "Zamfara",
