@@ -1839,7 +1839,7 @@ var formats = map[string]Format{
 			"04", "Cao Bằng", "92", "Cần Thơ", "48", "Đà Nẵng",
 			"66", "Đắk Lắk", "11", "Điện Biên", "75", "Đồng Nai",
 			"82", "Đồng Tháp", "52", "Gia Lai", "01", "Hà Nội",
-			"42", "Hà Tĩnh", "31", "Hải Phòng", "79", "Thành phố Hồ Chí Minh",
+			"42", "Hà Tĩnh", "31", "Hải Phòng", "79", "Hồ Chí Minh",
 			"46", "Huế", "56", "Hưng Yên", "34", "Khánh Hòa",
 			"12", "Lai Châu", "20", "Lạng Sơn", "68", "Lào Cai",
 			"35", "Lâm Đồng", "40", "Nghệ An", "37", "Ninh Bình",
