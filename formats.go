@@ -30,7 +30,7 @@ var formats = map[string]Format{
 		),
 		LocalRegions: NewRegionMap(
 			"AZ", "أبو ظبي", "SH", "الشارقة", "FU", "الفجيرة",
-			"UQ", "ام القيوين", "DU", "دبي", "RK", "رأس الخيمة",
+			"UQ", "أم القيوين", "DU", "دبي", "RK", "رأس الخيمة",
 			"AJ", "عجمان",
 		),
 	},
