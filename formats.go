@@ -1060,7 +1060,7 @@ var formats = map[string]Format{
 			"AGU", "Aguascalientes", "BCN", "Baja California", "BCS", "Baja California Sur",
 			"CAM", "Campeche", "CMX", "Ciudad de México", "COA", "Coahuila",
 			"COL", "Colima", "CHP", "Chiapas", "CHH", "Chihuahua",
-			"DUG", "Durango", "MEX", "Estado de México", "GUA", "Guanajuato",
+			"DUR", "Durango", "MEX", "Estado de México", "GUA", "Guanajuato",
 			"GRO", "Guerrero", "HID", "Hidalgo", "JAL", "Jalisco",
 			"MIC", "Michoacán", "MOR", "Morelos", "NAY", "Nayarit",
 			"NLE", "Nuevo León", "OAX", "Oaxaca", "PUE", "Puebla",
