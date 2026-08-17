@@ -1342,6 +1342,7 @@ var formats = map[string]Format{
 		PostalCodePattern: `\d{5,6}`,
 	},
 	"RU": {
+		Locale:            Locale{Language: "ru"},
 		Layout:            "%1\n%2\n%3\n%L\n%R\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion, FieldPostalCode},
 		RegionType:        RegionTypeRegion,
