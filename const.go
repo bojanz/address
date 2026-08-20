@@ -67,7 +67,7 @@ const (
 	LocalityTypeTownCity
 )
 
-var localityTypeNames = [...]string{"city", "district", "post_town", "suburb"}
+var localityTypeNames = [...]string{"city", "district", "post_town", "suburb", "town_city"}
 
 // String returns the string representation of l.
 func (l LocalityType) String() string {
