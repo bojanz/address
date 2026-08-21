@@ -20,7 +20,7 @@ var formats = map[string]Format{
 	},
 	"AE": {
 		Locale:     Locale{Language: "ar"},
-		Layout:     "%1\n%2\n%3\n%R",
+		Layout:     "%1\n%2\n%3\n%L, %R",
 		Required:   []Field{FieldLine1, FieldRegion},
 		RegionType: RegionTypeEmirate,
 		Regions: NewRegionMap(
