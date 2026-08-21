@@ -123,7 +123,8 @@ func TestFormatter_FormatUS(t *testing.T) {
 		t.Errorf("got:\n%v\nwant:\n%v", got, want)
 	}
 
-	// Partial address (no region).
+	// Partial address (no region). Keep the comma before the missing region,
+	// but drop the space after it.
 	addr = address.Address{
 		Line1:       "1098 Alta Ave",
 		Locality:    "Mountain View",
@@ -133,7 +134,7 @@ func TestFormatter_FormatUS(t *testing.T) {
 	wantLines = []string{
 		`<p class="address" translate="no">`,
 		`<span class="line1">1098 Alta Ave</span><br>`,
-		`<span class="locality">Mountain View</span> <span class="postal-code">94043</span><br>`,
+		`<span class="locality">Mountain View</span>, <span class="postal-code">94043</span><br>`,
 		`<span class="country" data-value="US">United States</span>`,
 		`</p>`,
 	}
@@ -195,6 +196,102 @@ func TestFormatter_FormatCN(t *testing.T) {
 		`<span class="postal-code">710043</span><br>`,
 		`<span class="region">陕西省</span><span class="locality">西安市</span><span class="sublocality">新城区</span><br>`,
 		`<span class="line1">幸福中路</span>`,
+		`</p>`,
+	}
+	got = formatter.Format(addr)
+	want = strings.Join(wantLines, "\n")
+	if got != want {
+		t.Errorf("got:\n%v\nwant:\n%v", got, want)
+	}
+
+	// The Chinese format doesn't use separators between the region, locality,
+	// and sublocality, even when the locality is missing.
+	addr.Locality = ""
+	wantLines = []string{
+		`<p class="address" translate="no">`,
+		`<span class="country" data-value="CN">中国</span><br>`,
+		`<span class="postal-code">710043</span><br>`,
+		`<span class="region">陕西省</span><span class="sublocality">新城区</span><br>`,
+		`<span class="line1">幸福中路</span>`,
+		`</p>`,
+	}
+	got = formatter.Format(addr)
+	want = strings.Join(wantLines, "\n")
+	if got != want {
+		t.Errorf("got:\n%v\nwant:\n%v", got, want)
+	}
+}
+
+func TestFormatter_FormatJP(t *testing.T) {
+	locale := address.NewLocale("en")
+	formatter := address.NewFormatter(locale)
+	formatter.NoCountry = true
+
+	// Include the comma only when the optional locality is present.
+	addr := address.Address{
+		Line1:       "1-1 Marunouchi",
+		Region:      "13",
+		PostalCode:  "1000001",
+		CountryCode: "JP",
+	}
+	wantLines := []string{
+		`<p class="address" translate="no">`,
+		`<span class="line1">1-1 Marunouchi</span><br>`,
+		`<span class="region">Tokyo</span><br>`,
+		`<span class="postal-code">1000001</span>`,
+		`</p>`,
+	}
+	got := formatter.Format(addr)
+	want := strings.Join(wantLines, "\n")
+	if got != want {
+		t.Errorf("got:\n%v\nwant:\n%v", got, want)
+	}
+
+	addr.Locality = "Chiyoda"
+	wantLines = []string{
+		`<p class="address" translate="no">`,
+		`<span class="line1">1-1 Marunouchi</span><br>`,
+		`<span class="locality">Chiyoda</span>, <span class="region">Tokyo</span><br>`,
+		`<span class="postal-code">1000001</span>`,
+		`</p>`,
+	}
+	got = formatter.Format(addr)
+	want = strings.Join(wantLines, "\n")
+	if got != want {
+		t.Errorf("got:\n%v\nwant:\n%v", got, want)
+	}
+}
+
+func TestFormatter_FormatTR(t *testing.T) {
+	locale := address.NewLocale("en")
+	formatter := address.NewFormatter(locale)
+	formatter.NoCountry = true
+
+	// The slash should be omitted when the locality is missing.
+	addr := address.Address{
+		Line1:       "Cad 1",
+		Locality:    "Kadıköy",
+		Region:      "34",
+		PostalCode:  "34000",
+		CountryCode: "TR",
+	}
+	wantLines := []string{
+		`<p class="address" translate="no">`,
+		`<span class="line1">Cad 1</span><br>`,
+		`<span class="postal-code">34000</span> <span class="locality">Kadıköy</span>/<span class="region">İstanbul</span>`,
+		`</p>`,
+	}
+	got := formatter.Format(addr)
+	want := strings.Join(wantLines, "\n")
+	if got != want {
+		t.Errorf("got:\n%v\nwant:\n%v", got, want)
+	}
+
+	addr.Locality = ""
+	wantLines = []string{
+		`<p class="address" translate="no">`,
+		`<span class="line1">Cad 1</span><br>`,
+		`<span class="postal-code">34000</span> <span class="region">İstanbul</span>`,
 		`</p>`,
 	}
 	got = formatter.Format(addr)

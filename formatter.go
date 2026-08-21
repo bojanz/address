@@ -134,29 +134,68 @@ func (f *Formatter) getValues(addr Address) map[Field]string {
 	return values
 }
 
-// writeValues inserts values into the layout and writes it to b.
-//
-// Tokens of empty fields are removed, as are their preceeding chars.
-// For example: "%L, %P" becomes "%L" when %P has no value.
+// writeValues writes the formatted address one line at a time, skipping any
+// lines that have no values.
 func (f *Formatter) writeValues(b *strings.Builder, layout string, values map[Field]string) {
-	prev := 0
-	for i := 0; i < len(layout); i++ {
-		if layout[i] != '%' {
+	written := false
+	for len(layout) > 0 {
+		line := layout
+		if n := strings.IndexByte(layout, '\n'); n >= 0 {
+			line, layout = layout[:n], layout[n+1:]
+		} else {
+			layout = ""
+		}
+		if !hasValues(line, values) {
 			continue
 		}
-		j, k := i+1, i+2
-		field := Field(layout[j:k])
-		if values[field] != "" {
-			prefix := layout[prev:i]
-			for l := 0; l < len(prefix); l++ {
-				if prefix[l] == '\n' {
-					// Prepend <br> to each newline.
-					b.WriteString("<br>")
-				}
-				b.WriteByte(prefix[l])
-			}
-			b.WriteString(values[field])
+		if written {
+			b.WriteString("<br>\n")
 		}
-		prev = k
+		writeLine(b, line, values)
+		written = true
+	}
+}
+
+// hasValues reports whether a line of the layout has at least one value.
+func hasValues(line string, values map[Field]string) bool {
+	for i := 0; i+1 < len(line); i++ {
+		if line[i] == '%' && values[Field(line[i+1:i+2])] != "" {
+			return true
+		}
+	}
+
+	return false
+}
+
+// writeLine fills in and writes a single line of the address layout.
+//
+// Empty fields are left out, along with any separator between them and the
+// next field that has a value.
+func writeLine(b *strings.Builder, line string, values map[Field]string) {
+	prev := 0
+	sep := ""
+	written := false
+	skipped := false
+	for i := 0; i+1 < len(line); i++ {
+		if line[i] != '%' {
+			continue
+		}
+		field := Field(line[i+1 : i+2])
+		if !skipped {
+			// Save the separator before the first skipped field. Any separators
+			// after it belong to fields that are being left out.
+			sep = line[prev:i]
+		}
+		prev = i + 2
+		if values[field] == "" {
+			skipped = true
+			continue
+		}
+		if written || !skipped {
+			b.WriteString(sep)
+		}
+		b.WriteString(values[field])
+		written = true
+		skipped = false
 	}
 }
