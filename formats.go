@@ -543,7 +543,7 @@ var formats = map[string]Format{
 		PostalCodePattern: `\d{3} ?\d{2}`,
 	},
 	"GS": {
-		Layout:            "%1\n%2\n%3\n\n%L\n%P",
+		Layout:            "%1\n%2\n%3\n%L\n%P",
 		Required:          []Field{FieldLine1, FieldLocality, FieldPostalCode},
 		PostalCodePattern: "SIQQ 1ZZ",
 	},
