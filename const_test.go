@@ -21,6 +21,28 @@ func TestSublocalityType_String(t *testing.T) {
 	}
 }
 
+func TestSublocalityType_Names(t *testing.T) {
+	// A missing name shifts the names of all subsequent sublocality types.
+	tests := []struct {
+		sublocalityType address.SublocalityType
+		want            string
+	}{
+		{address.SublocalityTypeSuburb, "suburb"},
+		{address.SublocalityTypeDistrict, "district"},
+		{address.SublocalityTypeNeighborhood, "neighborhood"},
+		{address.SublocalityTypeVillageTownship, "village_township"},
+		{address.SublocalityTypeTownland, "townland"},
+	}
+	for _, tt := range tests {
+		if got := tt.sublocalityType.String(); got != tt.want {
+			t.Errorf("got %v, want %v", got, tt.want)
+		}
+	}
+	if got := address.SublocalityType(len(tests)).String(); got != "" {
+		t.Errorf("got %v for an unnamed sublocality type, want an empty string", got)
+	}
+}
+
 func TestSublocalityType_MarshalText(t *testing.T) {
 	b, _ := address.SublocalityTypeTownland.MarshalText()
 	got := string(b)
@@ -59,6 +81,28 @@ func TestLocalityType_String(t *testing.T) {
 	got = address.LocalityType(20).String()
 	if got != "" {
 		t.Errorf("got %v, want an empty string", got)
+	}
+}
+
+func TestLocalityType_Names(t *testing.T) {
+	// A missing name shifts the names of all subsequent locality types.
+	tests := []struct {
+		localityType address.LocalityType
+		want         string
+	}{
+		{address.LocalityTypeCity, "city"},
+		{address.LocalityTypeDistrict, "district"},
+		{address.LocalityTypePostTown, "post_town"},
+		{address.LocalityTypeSuburb, "suburb"},
+		{address.LocalityTypeTownCity, "town_city"},
+	}
+	for _, tt := range tests {
+		if got := tt.localityType.String(); got != tt.want {
+			t.Errorf("got %v, want %v", got, tt.want)
+		}
+	}
+	if got := address.LocalityType(len(tests)).String(); got != "" {
+		t.Errorf("got %v for an unnamed locality type, want an empty string", got)
 	}
 }
 
@@ -103,6 +147,36 @@ func TestRegionType_String(t *testing.T) {
 	}
 }
 
+func TestRegionType_Names(t *testing.T) {
+	// A missing name shifts the names of all subsequent region types.
+	tests := []struct {
+		regionType address.RegionType
+		want       string
+	}{
+		{address.RegionTypeProvince, "province"},
+		{address.RegionTypeArea, "area"},
+		{address.RegionTypeCanton, "canton"},
+		{address.RegionTypeCounty, "county"},
+		{address.RegionTypeDepartment, "department"},
+		{address.RegionTypeDistrict, "district"},
+		{address.RegionTypeDoSi, "do_si"},
+		{address.RegionTypeEmirate, "emirate"},
+		{address.RegionTypeIsland, "island"},
+		{address.RegionTypeParish, "parish"},
+		{address.RegionTypePrefecture, "prefecture"},
+		{address.RegionTypeRegion, "region"},
+		{address.RegionTypeState, "state"},
+	}
+	for _, tt := range tests {
+		if got := tt.regionType.String(); got != tt.want {
+			t.Errorf("got %v, want %v", got, tt.want)
+		}
+	}
+	if got := address.RegionType(len(tests)).String(); got != "" {
+		t.Errorf("got %v for an unnamed region type, want an empty string", got)
+	}
+}
+
 func TestRegionType_MarshalText(t *testing.T) {
 	b, _ := address.RegionTypeProvince.MarshalText()
 	got := string(b)
@@ -141,6 +215,27 @@ func TestPostalCodeType_String(t *testing.T) {
 	got = address.PostalCodeType(20).String()
 	if got != "" {
 		t.Errorf("got %v, want an empty string", got)
+	}
+}
+
+func TestPostalCodeType_Names(t *testing.T) {
+	// A missing name shifts the names of all subsequent postal code types.
+	tests := []struct {
+		postalCodeType address.PostalCodeType
+		want           string
+	}{
+		{address.PostalCodeTypePostal, "postal"},
+		{address.PostalCodeTypeEir, "eir"},
+		{address.PostalCodeTypePin, "pin"},
+		{address.PostalCodeTypeZip, "zip"},
+	}
+	for _, tt := range tests {
+		if got := tt.postalCodeType.String(); got != tt.want {
+			t.Errorf("got %v, want %v", got, tt.want)
+		}
+	}
+	if got := address.PostalCodeType(len(tests)).String(); got != "" {
+		t.Errorf("got %v for an unnamed postal code type, want an empty string", got)
 	}
 }
 

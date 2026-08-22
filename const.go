@@ -114,8 +114,8 @@ const (
 )
 
 var regionTypeNames = [...]string{
-	"province", "area", "canton", "department", "district", "do_si",
-	"emirate", "island", "parish", "prefecture", "region", "state",
+	"province", "area", "canton", "county", "department", "district",
+	"do_si", "emirate", "island", "parish", "prefecture", "region", "state",
 }
 
 // String returns the string representation of r.
