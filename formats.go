@@ -548,9 +548,20 @@ var formats = map[string]Format{
 		PostalCodePattern: "SIQQ 1ZZ",
 	},
 	"GT": {
-		Layout:            "%1\n%2\n%3\n%P- %L",
+		Layout:            "%1\n%2\n%3\n%P- %L, %R",
 		Required:          []Field{FieldLine1, FieldLocality},
+		RegionType:        RegionTypeDepartment,
 		PostalCodePattern: `\d{5}`,
+		Regions: NewRegionMap(
+			"16", "Alta Verapaz", "15", "Baja Verapaz", "04", "Chimaltenango",
+			"20", "Chiquimula", "02", "El Progreso", "05", "Escuintla",
+			"01", "Guatemala", "13", "Huehuetenango", "18", "Izabal",
+			"21", "Jalapa", "22", "Jutiapa", "17", "Petén",
+			"09", "Quetzaltenango", "14", "Quiché", "11", "Retalhuleu",
+			"03", "Sacatepéquez", "12", "San Marcos", "06", "Santa Rosa",
+			"07", "Sololá", "10", "Suchitepéquez", "08", "Totonicapán",
+			"19", "Zacapa",
+		),
 	},
 	"GU": {
 		Layout:            "%1\n%2\n%3\n%L %P",
