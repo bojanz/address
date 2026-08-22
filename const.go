@@ -114,7 +114,7 @@ const (
 )
 
 var regionTypeNames = [...]string{
-	"province", "area", "canton", "department", "distict", "do_si",
+	"province", "area", "canton", "department", "district", "do_si",
 	"emirate", "island", "parish", "prefecture", "region", "state",
 }
 
