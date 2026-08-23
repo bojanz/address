@@ -1215,6 +1215,7 @@ var formats = map[string]Format{
 	"PE": {
 		Layout:            "%1\n%2\n%3\n%L %P\n%R",
 		Required:          []Field{FieldLine1, FieldLocality, FieldRegion},
+		RegionType:        RegionTypeRegion,
 		LocalityType:      LocalityTypeDistrict,
 		PostalCodePattern: `[0-2]\d{4}`,
 		Regions: NewRegionMap(
