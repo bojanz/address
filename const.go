@@ -3,7 +3,10 @@
 
 package address
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 // Field represents an address field.
 type Field string
@@ -46,14 +49,12 @@ func (s SublocalityType) MarshalText() ([]byte, error) {
 
 // UnmarshalText implements the encoding.TextUnmarshaler interface.
 func (s *SublocalityType) UnmarshalText(b []byte) error {
-	aux := string(b)
-	for i, name := range sublocalityTypeNames {
-		if name == aux {
-			*s = SublocalityType(i)
-			return nil
-		}
+	i := slices.Index(sublocalityTypeNames[:], string(b))
+	if i < 0 {
+		return fmt.Errorf("invalid sublocality type %q", b)
 	}
-	return fmt.Errorf("invalid sublocality type %q", aux)
+	*s = SublocalityType(i)
+	return nil
 }
 
 // LocalityType represents the locality type.
@@ -84,14 +85,12 @@ func (l LocalityType) MarshalText() ([]byte, error) {
 
 // UnmarshalText implements the encoding.TextUnmarshaler interface.
 func (l *LocalityType) UnmarshalText(b []byte) error {
-	aux := string(b)
-	for i, name := range localityTypeNames {
-		if name == aux {
-			*l = LocalityType(i)
-			return nil
-		}
+	i := slices.Index(localityTypeNames[:], string(b))
+	if i < 0 {
+		return fmt.Errorf("invalid locality type %q", b)
 	}
-	return fmt.Errorf("invalid locality type %q", aux)
+	*l = LocalityType(i)
+	return nil
 }
 
 // RegionType represents the region type.
@@ -133,14 +132,12 @@ func (r RegionType) MarshalText() ([]byte, error) {
 
 // UnmarshalText implements the encoding.TextUnmarshaler interface.
 func (r *RegionType) UnmarshalText(b []byte) error {
-	aux := string(b)
-	for i, name := range regionTypeNames {
-		if name == aux {
-			*r = RegionType(i)
-			return nil
-		}
+	i := slices.Index(regionTypeNames[:], string(b))
+	if i < 0 {
+		return fmt.Errorf("invalid region type %q", b)
 	}
-	return fmt.Errorf("invalid region type %q", aux)
+	*r = RegionType(i)
+	return nil
 }
 
 // PostalCodeType represents the postal code type.
@@ -170,12 +167,10 @@ func (p PostalCodeType) MarshalText() ([]byte, error) {
 
 // UnmarshalText implements the encoding.TextUnmarshaler interface.
 func (p *PostalCodeType) UnmarshalText(b []byte) error {
-	aux := string(b)
-	for i, name := range postalCodeTypeNames {
-		if name == aux {
-			*p = PostalCodeType(i)
-			return nil
-		}
+	i := slices.Index(postalCodeTypeNames[:], string(b))
+	if i < 0 {
+		return fmt.Errorf("invalid postal code type %q", b)
 	}
-	return fmt.Errorf("invalid postal code type %q", aux)
+	*p = PostalCodeType(i)
+	return nil
 }

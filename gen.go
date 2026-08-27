@@ -10,10 +10,11 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"maps"
 	"net/http"
 	"os"
 	"reflect"
-	"sort"
+	"slices"
 	"strings"
 	"text/template"
 	"time"
@@ -108,14 +109,9 @@ func fetchCountries() (map[string]string, error) {
 		return nil, fmt.Errorf("fetchCountries: %w", err)
 	}
 	countries := aux.Main.En.LocaleDisplayNames.Territories
-	for countryCode := range countries {
-		if len(countryCode) > 2 {
-			delete(countries, countryCode)
-		}
-		if contains([]string{"EU", "EZ", "UN", "QO", "XA", "XB", "ZZ"}, countryCode) {
-			delete(countries, countryCode)
-		}
-	}
+	maps.DeleteFunc(countries, func(countryCode, _ string) bool {
+		return len(countryCode) > 2 || slices.Contains([]string{"EU", "EZ", "UN", "QO", "XA", "XB", "ZZ"}, countryCode)
+	})
 
 	return countries, nil
 }
@@ -138,16 +134,7 @@ func fetchURL(url string) ([]byte, error) {
 	return data, nil
 }
 
-func contains(a []string, x string) bool {
-	for _, v := range a {
-		if v == x {
-			return true
-		}
-	}
-	return false
-}
-
-func export(i interface{}) string {
+func export(i any) string {
 	v := reflect.ValueOf(i)
 	switch v.Kind() {
 	case reflect.Map:
@@ -167,11 +154,11 @@ func exportMap(v reflect.Value) string {
 		values = append(values, value)
 		flipped[value] = key
 	}
-	sort.Slice(values, func(i, j int) bool {
+	slices.SortFunc(values, func(a, b string) int {
 		// Compare Å as A to avoid having it come after Z.
-		v1 := strings.Replace(values[i], "Å", "A", 1)
-		v2 := strings.Replace(values[j], "Å", "A", 1)
-		return v1 < v2
+		a = strings.Replace(a, "Å", "A", 1)
+		b = strings.Replace(b, "Å", "A", 1)
+		return strings.Compare(a, b)
 	})
 
 	b := strings.Builder{}

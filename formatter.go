@@ -138,13 +138,7 @@ func (f *Formatter) getValues(addr Address) map[Field]string {
 // lines that have no values.
 func (f *Formatter) writeValues(b *strings.Builder, layout string, values map[Field]string) {
 	written := false
-	for len(layout) > 0 {
-		line := layout
-		if n := strings.IndexByte(layout, '\n'); n >= 0 {
-			line, layout = layout[:n], layout[n+1:]
-		} else {
-			layout = ""
-		}
+	for line := range strings.SplitSeq(layout, "\n") {
 		if !hasValues(line, values) {
 			continue
 		}

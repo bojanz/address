@@ -7,8 +7,9 @@ package address
 import (
 	"bytes"
 	"fmt"
+	"maps"
 	"regexp"
-	"sort"
+	"slices"
 )
 
 // Address represents an address.
@@ -37,7 +38,7 @@ func (a Address) IsEmpty() bool {
 
 // Format represents an address format.
 type Format struct {
-	Locale            Locale           `json:"locale,omitempty"`
+	Locale            Locale           `json:"locale,omitzero"`
 	Layout            string           `json:"layout,omitempty"`
 	LocalLayout       string           `json:"local_layout,omitempty"`
 	Required          []Field          `json:"required,omitempty"`
@@ -48,18 +49,13 @@ type Format struct {
 	PostalCodeType    PostalCodeType   `json:"postal_code_type,omitempty"`
 	PostalCodePattern string           `json:"postal_code_pattern,omitempty"`
 	ShowRegionID      bool             `json:"show_region_id,omitempty"`
-	Regions           RegionMap        `json:"regions,omitempty"`
-	LocalRegions      RegionMap        `json:"local_regions,omitempty"`
+	Regions           RegionMap        `json:"regions,omitzero"`
+	LocalRegions      RegionMap        `json:"local_regions,omitzero"`
 }
 
 // IsRequired returns whether the given field is required.
 func (f Format) IsRequired(field Field) bool {
-	for _, ff := range f.Required {
-		if ff == field {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(f.Required, field)
 }
 
 // CheckRequired checks whether a required field is valid (non-blank).
@@ -140,9 +136,9 @@ func NewRegionMap(pairs ...string) RegionMap {
 	r := RegionMap{}
 	r.keys = make([]string, 0, len(pairs)/2)
 	r.values = make(map[string]string, len(pairs)/2)
-	for i := 0; i < len(pairs)-1; i += 2 {
-		r.keys = append(r.keys, pairs[i])
-		r.values[pairs[i]] = pairs[i+1]
+	for pair := range slices.Chunk(pairs, 2) {
+		r.keys = append(r.keys, pair[0])
+		r.values[pair[0]] = pair[1]
 	}
 
 	return r
@@ -206,12 +202,7 @@ func CheckCountryCode(countryCode string) bool {
 
 // GetCountryCodes returns all known country codes.
 func GetCountryCodes() []string {
-	countryCodes := make([]string, 0, len(countries))
-	for countryCode := range countries {
-		countryCodes = append(countryCodes, countryCode)
-	}
-	sort.Strings(countryCodes)
-	return countryCodes
+	return slices.Sorted(maps.Keys(countries))
 }
 
 // GetCountryNames returns all known country names, keyed by country code.
