@@ -88,7 +88,7 @@ func (f Format) CheckPostalCode(postalCode string) bool {
 }
 
 // PostalCodeValidationPattern returns the full regex pattern for validating the postal code.
-func (f *Format) PostalCodeValidationPattern() string {
+func (f Format) PostalCodeValidationPattern() string {
 	return "^" + f.PostalCodePattern + "$"
 }
 
